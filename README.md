@@ -1,9 +1,13 @@
 # Backstreet_Bungalow
 
-# User stories:
+User stories:
+
 A user can login
+
 A user can logout
+
 A user can register
+
 A user can view a list of the latest articles from the internet
 A user can view all albums
 A user can view all songs
