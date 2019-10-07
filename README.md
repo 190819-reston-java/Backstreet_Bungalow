@@ -1,6 +1,6 @@
 # Backstreet_Bungalow
 
-User stories:
+# User stories:
 A user can login
 A user can logout
 A user can register
