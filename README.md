@@ -1,7 +1,7 @@
 # Backstreet_Bungalow
 
 User stories:
-A user can login '\n'
+A user can login
 A user can logout
 A user can register
 A user can view a list of the latest articles from the internet
