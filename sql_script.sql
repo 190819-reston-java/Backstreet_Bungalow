@@ -44,22 +44,29 @@ CREATE TABLE Comments(
 -- This function exists for the Messages table
 -- to check if the end_user_id is not the same
 -- as the sender.
---CREATE OR REPLACE FUNCTION same_user
---	(username_match int, end_users_id int) RETURNS BOOLEAN 
---AS
---$$
---DECLARE
---	results boolean;
---BEGIN
---	results = TRUE;
---	IF (username_match = end_users_id) THEN
---		results = FALSE;
---	END IF;
---	RETURN results;
---END;
-----        SELECT username FROM Users 
-----        WHERE username = username_match;
---$$ LANGUAGE SQL;
+
+-- We use JavaScript here to easily insert a conditional
+-- statement. In order for it to work, auto formatting convert
+-- case must be turned off and PLV8 must be marked as the
+-- language and run as an extension before creating the function.
+-- to turn off auto-format for capitalization:
+-- file>properties>SQLCompletion>GlobalSettings uncheck convert keyword case
+-- THIS TECHNIQUE IS NOT REVATURE SANCTIONED
+
+CREATE EXTENSION PLV8;
+
+CREATE OR REPLACE FUNCTION same_user
+	(username_match int, end_users_id int) RETURNS BOOLEAN 
+AS
+$$
+
+let results = true;
+if (username_match == end_users_id) {
+	results = false;
+}
+return results;
+$$ LANGUAGE PLV8;
+
 
 
 CREATE TABLE Messages (
@@ -70,7 +77,7 @@ CREATE TABLE Messages (
 	users_id INT REFERENCES users(id) NOT NULL,
 	content VARCHAR(300) NOT NULL,
 	end_users_id INT REFERENCES users(id) NOT NULL, 
-		--CHECK(same_user(users_id, end_users_id) = false),
+		CHECK(same_user(users_id, end_users_id) = false),
 	draft BOOLEAN NOT NULL
 
 );
