@@ -1,13 +1,36 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name = "Users")
 public class Users {
 	
+	@Id
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@Column( name="id" )
 	private long Id;
+	
+	@Column(name="username")
 	private String username;
+	
+	@Column(name="pswd")
 	private String password;
+	
+	@Column(name="email")
 	private String email;
-	private String pswd;
+	
+	@Column(name="role")
 	private String role;
+	
+	@Column(name="show_info")
 	private boolean showInfo;
 	
 	public Users() {
@@ -15,7 +38,7 @@ public class Users {
 		username = "";
 		password = "";
 		email = "";
-		pswd = "";
+		password = "";
 		role = "";
 		showInfo = true;
 	}
@@ -24,13 +47,13 @@ public class Users {
 	
 	
 	public Users(long id, String username, String password, 
-			String email, String pswd, String role, boolean showInfo) {
+			String email, String role, boolean showInfo) {
 		super();
 		this.Id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.pswd = pswd;
+		this.password = password;
 		this.role = role;
 		this.showInfo = showInfo;
 	}
@@ -81,7 +104,7 @@ public class Users {
 	@Override
 	public String toString() {
 		return "Users [username=" + username + ", password=" + password + ", email=" 
-				+ email + ", pswd=" + pswd + ", role=" + role 
+				+ email + ", password=" + password + ", role=" + role 
 				+ ", showInfo=" + showInfo + "]";
 	}
 	

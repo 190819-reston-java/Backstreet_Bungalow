@@ -1,9 +1,7 @@
 CREATE DATABASE backstreet;
 CREATE TABLE Users (
 	id SERIAL PRIMARY KEY,
-	-- The ID has 20 characters to distinguish
-	-- from the other tables that will be
-	-- referred to in the Activity table.
+
 	first_name VARCHAR(30) NOT NULL,
 	last_name VARCHAR(30) NOT NULL,
 	username VARCHAR(15) UNIQUE NOT NULL,
