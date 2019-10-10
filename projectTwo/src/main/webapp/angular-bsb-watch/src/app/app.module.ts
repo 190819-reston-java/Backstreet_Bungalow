@@ -25,6 +25,7 @@ import { SingleUserPendingPostsComponent } from './single-user-pending-posts/sin
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
