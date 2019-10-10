@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "Users")
+@Component
 public class Users {
 	
 	@Id
@@ -34,17 +35,8 @@ public class Users {
 	private boolean showInfo;
 	
 	public Users() {
-		Id = 0;
-		username = "";
-		password = "";
-		email = "";
-		password = "";
-		role = "";
-		showInfo = true;
+		super();
 	}
-	
-	
-	
 	
 	public Users(long id, String username, String password, 
 			String email, String role, boolean showInfo) {
@@ -57,9 +49,6 @@ public class Users {
 		this.role = role;
 		this.showInfo = showInfo;
 	}
-
-
-
 
 	public long getId() {
 		return Id;
