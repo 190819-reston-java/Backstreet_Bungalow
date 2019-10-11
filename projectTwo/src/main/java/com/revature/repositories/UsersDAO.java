@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.revature.repositories;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.revature.beans.Users;
 
 
-public class UsersDAO {
+public class UsersDAO implements IUsersDAO {
 	
 	@Autowired
 	private SessionFactory sf;
@@ -24,6 +24,12 @@ public class UsersDAO {
 		
 		return a;
 		
+	}
+	
+	@Override
+	public Users Login(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

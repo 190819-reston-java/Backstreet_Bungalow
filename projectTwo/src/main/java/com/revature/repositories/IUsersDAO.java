@@ -1,8 +1,8 @@
-package com.revature.service;
+package com.revature.repositories;
 
 import com.revature.beans.Users;
 
-public interface IUserDAO {
+public interface IUsersDAO {
 
 	public Users Login(String username, String password);
 }

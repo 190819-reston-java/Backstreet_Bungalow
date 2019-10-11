@@ -1,0 +1,1 @@
+INSERT INTO Users(first_name,last_name,username,role,email,pswd,show_info) VALUES('Jolie','Lovs','Xx_jlov_xX','Im Baby','bboyff@aol.com','sdhfiu',true);
