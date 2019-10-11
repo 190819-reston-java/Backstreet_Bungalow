@@ -72,25 +72,22 @@ if (username_match === end_users_id) {
 return results;
 $$ LANGUAGE PLV8;
 
-
+drop table messages;
 
 CREATE TABLE Messages (
 
 	id SERIAL PRIMARY KEY, 
-	-- Message ID also has 20 character limit
-	-- for the same reason the User ID has it.
 	author_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	content VARCHAR(500) NOT NULL
 
 );
 
-CREATE TABLE messages_map (
+CREATE TABLE Messages_map (
 	
-	message_id INT PRIMARY KEY REFERENCES Messages(id),
-	author_id INT REFERENCES Messages(author_id),
-	reciever_id INT REFERENCES Users(id) 
-		CHECK(same_user(reciever_id,author_id) = false),
+	message_id INT REFERENCES Messages(id),
+	author_id INT,
+	reciever_id INT CHECK(same_user(reciever_id,author_id) = false),
 	is_sent BOOLEAN NOT NULL,
 	is_in_trash BOOLEAN NOT NULL
 
