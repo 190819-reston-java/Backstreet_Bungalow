@@ -1,7 +1,6 @@
 CREATE DATABASE backstreet;
 CREATE TABLE Users (
 	id SERIAL PRIMARY KEY,
-
 	first_name VARCHAR(30) NOT NULL,
 	last_name VARCHAR(30) NOT NULL,
 	username VARCHAR(15) UNIQUE NOT NULL,
