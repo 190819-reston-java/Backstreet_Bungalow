@@ -21,12 +21,14 @@ import { LocationComponent } from './location/location.component';
 import { PendingPhotosComponent } from './pending-photos/pending-photos.component';
 import { PendingPostsComponent } from './pending-posts/pending-posts.component';
 import { UserStatisticsComponent } from './user-statistics/user-statistics.component';
-import { SingleUserPendingPostsComponent } from './single-user-pending-posts/single-user-pending-posts.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserProfileDetailsComponent } from './user-profile-details/user-profile-details.component';
+import { SingleUserPhotosComponent } from './single-user-photos/single-user-photos.component';
+import { MemberSectionComponent } from './member-section/member-section.component';
+import { PopularSectionComponent } from './popular-section/popular-section.component';
 
 
 @NgModule({
@@ -51,11 +53,13 @@ import { UserProfileDetailsComponent } from './user-profile-details/user-profile
     PendingPhotosComponent,
     PendingPostsComponent,
     UserStatisticsComponent,
-    SingleUserPendingPostsComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    UserProfileDetailsComponent
+    UserProfileDetailsComponent,
+    SingleUserPhotosComponent,
+    MemberSectionComponent,
+    PopularSectionComponent
   ],
   imports: [
     BrowserModule,
