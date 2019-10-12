@@ -26,6 +26,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UserProfileDetailsComponent } from './user-profile-details/user-profile-details.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { AppRoutingModule } from './app-routing.module';
     SingleUserPendingPostsComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    UserProfileDetailsComponent
   ],
   imports: [
     BrowserModule,
