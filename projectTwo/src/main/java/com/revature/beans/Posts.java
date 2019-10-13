@@ -1,47 +1,56 @@
-package com.revature.beans;
+package com.revature.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "Posts")
+@Component
 public class Posts {
 	
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	@Column( name="id" )
-	private long Id;
+	@Column( name="post_id" )
+	private long id;
 	
-	@OneToMany
+	@Column(name="users_id")
 	private String userId;
-	private String content;
+	
+	@Column(name="title")
 	private String title;
 	
+	@Column(name="content")
+	private String content;
+	
+	@Column(name="num_of_comments")
+	private long numOfComments;
+
 	public Posts() {
-		Id = 0;
-		userId = content = title = "";
+		super();
 	}
 
-	public Posts(long id, String userId, String content, 
-			String title) {
-		Id = id;
+	public Posts(long id, String userId, String title, String content, long numOfComments) {
+		super();
+		this.id = id;
 		this.userId = userId;
-		this.content = content;
 		this.title = title;
+		this.content = content;
+		this.numOfComments = numOfComments;
 	}
 
 	public long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getUserId() {
@@ -52,14 +61,6 @@ public class Posts {
 		this.userId = userId;
 	}
 
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -68,14 +69,69 @@ public class Posts {
 		this.title = title;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public long getNumOfComments() {
+		return numOfComments;
+	}
+
+	public void setNumOfComments(long numOfComments) {
+		this.numOfComments = numOfComments;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (numOfComments ^ (numOfComments >>> 32));
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Posts other = (Posts) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (id != other.id)
+			return false;
+		if (numOfComments != other.numOfComments)
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		if (userId == null) {
+			if (other.userId != null)
+				return false;
+		} else if (!userId.equals(other.userId))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
-		return "Posts [Id=" + Id + ", userId=" + userId 
-				+ ", content=" + content + ", title=" + title + "]";
+		return "Posts [id=" + id + ", userId=" + userId + ", title=" + title + ", content=" + content
+				+ ", numOfComments=" + numOfComments + "]";
 	}
-	
-	
-	
-	
 	
 }
