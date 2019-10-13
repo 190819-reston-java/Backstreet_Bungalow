@@ -1,12 +1,37 @@
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LatestArticlesComponent } from './latest-articles/latest-articles.component';
+import { MemberSectionComponent } from './member-section/member-section.component';
+import { UserProfileDetailsComponent } from './user-profile-details/user-profile-details.component';
+import { MusicInfoComponent } from './music-info/music-info.component';
+import { LatestPhotosComponent } from './latest-photos/latest-photos.component';
+import { LatestBlogPostsComponent } from './latest-blog-posts/latest-blog-posts.component';
+import { PopularSectionComponent } from './popular-section/popular-section.component';
+import { LocationComponent } from './location/location.component';
+
+const routes: Routes = [
+  { path: 'profile', component: UserProfileComponent },
+  { path: 'latest-articles', component: LatestArticlesComponent },
+  { path: 'members', component: MemberSectionComponent },
+  { path: 'music', component: MusicInfoComponent },
+  { path: 'photos', component: LatestPhotosComponent },
+  { path: 'blog-posts', component: LatestBlogPostsComponent },
+  { path: 'popular', component: PopularSectionComponent },
+  { path: 'location', component: LocationComponent },
+  { path: '', redirectTo: '/profile', pathMatch: 'full' },
+  { path: 'profile/:id', component: UserProfileDetailsComponent },
+]
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forRoot(routes),
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
