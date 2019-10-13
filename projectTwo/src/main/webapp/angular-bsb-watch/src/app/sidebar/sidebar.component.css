@@ -16,42 +16,37 @@
   }
   
   /* The about link: 20px from the top with a green background */
-  #about {
+  #profile-button {
     top: 20px;
     background-color: #4CAF50;
   }
   
-  #blog {
+  #articles-button {
     top: 80px;
     background-color: #2196F3; /* Blue */
   }
   
-  #projects {
+  #member-button {
     top: 140px;
     background-color: #f44336; /* Red */
   }
   
-  #contact {
+  #popular-button {
     top: 200px;
     background-color: #555 /* Light Black */
   }
 
-  #photos {
+  #photos-button {
     top: 260px;
     background-color: #4CAF50;
   }
   
-  #blog-posts {
+  #blogs-button {
     top: 320px;
     background-color: #2196F3; /* Blue */
   }
   
-  #members {
+  #location-button {
     top: 380px;
     background-color: #f44336; /* Red */
-  }
-  
-  #articles {
-    top: 440px;
-    background-color: #555 /* Light Black */
   }
