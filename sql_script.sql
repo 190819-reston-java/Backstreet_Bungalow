@@ -21,10 +21,10 @@ CREATE TABLE Activity (
 	views INTEGER NOT NULL
 );
 
-
+DROP TABLE posts;
 CREATE TABLE Posts (
 
-	post_id INT PRIMARY KEY REFERENCES Activity(id),
+	post_id INT REFERENCES Activity(id),
 	users_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(50) NOT NULL,
 	content VARCHAR NOT NULL,
@@ -35,13 +35,12 @@ CREATE TABLE Posts (
 	-- comments aren't technically posts.
 );
 
---drop table comments;
+drop table comments;
 
 CREATE TABLE Comments (
 
-	comment_id INT PRIMARY KEY REFERENCES Activity(id), 
+	comment_id INT REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
-	post_id INT REFERENCES posts(post_id) NOT NULL,
 	content VARCHAR NOT NULL
 
 );
@@ -77,16 +76,16 @@ drop table messages;
 CREATE TABLE Messages (
 
 	id SERIAL PRIMARY KEY, 
-	author_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	content VARCHAR(500) NOT NULL
 
 );
 
+DROP TABLE Messages_map;
 CREATE TABLE Messages_map (
 	
 	message_id INT REFERENCES Messages(id),
-	author_id INT,
+	author_id INT REFERENCES users(id),
 	reciever_id INT CHECK(same_user(reciever_id,author_id) = false),
 	is_sent BOOLEAN NOT NULL,
 	is_in_trash BOOLEAN NOT NULL
