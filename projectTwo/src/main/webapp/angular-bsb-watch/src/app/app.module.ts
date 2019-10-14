@@ -29,6 +29,10 @@ import { UserProfileDetailsComponent } from './user-profile-details/user-profile
 import { SingleUserPhotosComponent } from './single-user-photos/single-user-photos.component';
 import { MemberSectionComponent } from './member-section/member-section.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HttpClientModule }    from '@angular/common/http';
+import { NgnewsModule, NewsApiKeyConfig } from 'angular-news-api';
+
 
 
 @NgModule({
@@ -64,6 +68,9 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

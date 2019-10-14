@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 
 @Component({
@@ -8,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  private loginURL = '/login';
+
+  onSubmit() {
+    console.log("this works");
+  } 
+
   loginImage:any = "assets\\images\\bb4.jpg";
   title = 'app';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+
 
   ngOnInit() {
   }

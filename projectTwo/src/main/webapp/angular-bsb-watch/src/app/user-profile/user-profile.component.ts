@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../user';
+import { USER } from '../mock-user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
 
   constructor() { }
-
+  
   ngOnInit() {
   }
 
