@@ -32,6 +32,7 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
 import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -73,6 +74,7 @@ import { HttpClientModule }    from '@angular/common/http';
     }),
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],
