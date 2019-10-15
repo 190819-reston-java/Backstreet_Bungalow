@@ -32,6 +32,7 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
 import { NgnewsModule, NewsApiKeyConfig } from 'angular-news-api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -70,6 +71,7 @@ import { NgnewsModule, NewsApiKeyConfig } from 'angular-news-api';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],
