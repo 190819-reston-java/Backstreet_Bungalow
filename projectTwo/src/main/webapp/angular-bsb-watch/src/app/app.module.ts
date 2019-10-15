@@ -29,9 +29,9 @@ import { UserProfileDetailsComponent } from './user-profile-details/user-profile
 import { SingleUserPhotosComponent } from './single-user-photos/single-user-photos.component';
 import { MemberSectionComponent } from './member-section/member-section.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
+import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
-import { NgnewsModule, NewsApiKeyConfig } from 'angular-news-api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -69,6 +69,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXIzuwkc8zbqGeoRf0BRC1yhAXv6p9mhw'
+    }),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

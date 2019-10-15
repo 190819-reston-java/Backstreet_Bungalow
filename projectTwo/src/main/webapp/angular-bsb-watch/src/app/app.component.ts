@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-bsb-watch';
+  lat = 38.953546;
+  lng = -77.350469;
 }
