@@ -29,6 +29,11 @@ import { UserProfileDetailsComponent } from './user-profile-details/user-profile
 import { SingleUserPhotosComponent } from './single-user-photos/single-user-photos.component';
 import { MemberSectionComponent } from './member-section/member-section.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
+import { AgmCoreModule } from '@agm/core';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -64,6 +69,13 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXIzuwkc8zbqGeoRf0BRC1yhAXv6p9mhw'
+    }),
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

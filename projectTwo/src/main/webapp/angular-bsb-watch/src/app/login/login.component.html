@@ -1,4 +1,10 @@
 <!-- <div>
     <img ng-src="{{loginImage}}" alt="bb4" height="100" width="100">
 </div> -->
-<p>login works!</p>
+<div class="loginContainer">
+    <form class="login" (click)="onSubmit()">
+        <input type="text" class="username" name="username" placeholder="Username" required>
+        <input type="password" class="password" name="password" placeholder="Password" required>
+        <input type="submit">
+    </form>
+</div>
