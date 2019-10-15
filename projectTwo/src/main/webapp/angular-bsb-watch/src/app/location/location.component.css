@@ -1,0 +1,36 @@
+agm-map {
+    height: 500px;
+    width: 500px;
+  }
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #8e44ad;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    display: flex;
+    overflow-x: auto;
+    background-color: #fff;
+    min-width: 100%;
+    min-height: 200px;
+  }
+
+  .card--content {
+    background-color: #e74c3c;
+    min-width: 500px;
+    margin: 5px;
+  }
+
+  .card::-webkit-scrollbar {
+    display: none;
+  }

@@ -29,7 +29,7 @@ import { UserProfileDetailsComponent } from './user-profile-details/user-profile
 import { SingleUserPhotosComponent } from './single-user-photos/single-user-photos.component';
 import { MemberSectionComponent } from './member-section/member-section.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -64,6 +64,9 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXIzuwkc8zbqGeoRf0BRC1yhAXv6p9mhw'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
