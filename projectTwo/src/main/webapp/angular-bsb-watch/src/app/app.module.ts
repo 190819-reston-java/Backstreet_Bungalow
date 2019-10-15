@@ -31,7 +31,7 @@ import { MemberSectionComponent } from './member-section/member-section.componen
 import { PopularSectionComponent } from './popular-section/popular-section.component';
 import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
