@@ -30,6 +30,10 @@ import { SingleUserPhotosComponent } from './single-user-photos/single-user-phot
 import { MemberSectionComponent } from './member-section/member-section.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
 import { AgmCoreModule } from '@agm/core';
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { HttpClientModule }    from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -66,7 +70,10 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXIzuwkc8zbqGeoRf0BRC1yhAXv6p9mhw'
-    })
+    }),
+    FormsModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

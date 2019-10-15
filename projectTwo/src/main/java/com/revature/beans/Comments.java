@@ -10,33 +10,33 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name = "Messages")
+@Table(name = "Comments")
 @Component
-public class Messages {
+public class Comments {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	@Column( name="comment_id" )
 	private long id;
 	
-	@Column(name="author_id")
-	private long authorId;
+	@Column(name="users_id")
+	private long usersId;
 	
-	@Column(name="title")
-	private String title;
+	@Column(name="post_id")
+	private long postId;
 	
 	@Column(name="content")
 	private String content;
 
-	public Messages() {
+	public Comments() {
 		super();
 	}
 
-	public Messages(long id, long authorId, String title, String content) {
+	public Comments(long id, long usersId, long postId, String content) {
 		super();
 		this.id = id;
-		this.authorId = authorId;
-		this.title = title;
+		this.usersId = usersId;
+		this.postId = postId;
 		this.content = content;
 	}
 
@@ -48,20 +48,20 @@ public class Messages {
 		this.id = id;
 	}
 
-	public long getAuthorId() {
-		return authorId;
+	public long getUsersId() {
+		return usersId;
 	}
 
-	public void setAuthorId(long authorId) {
-		this.authorId = authorId;
+	public void setUsersId(long usersId) {
+		this.usersId = usersId;
 	}
 
-	public String getTitle() {
-		return title;
+	public long getPostId() {
+		return postId;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setPostId(long postId) {
+		this.postId = postId;
 	}
 
 	public String getContent() {
@@ -76,10 +76,10 @@ public class Messages {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (authorId ^ (authorId >>> 32));
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + (int) (postId ^ (postId >>> 32));
+		result = prime * result + (int) (usersId ^ (usersId >>> 32));
 		return result;
 	}
 
@@ -91,9 +91,7 @@ public class Messages {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Messages other = (Messages) obj;
-		if (authorId != other.authorId)
-			return false;
+		Comments other = (Comments) obj;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -101,17 +99,16 @@ public class Messages {
 			return false;
 		if (id != other.id)
 			return false;
-		if (title == null) {
-			if (other.title != null)
-				return false;
-		} else if (!title.equals(other.title))
+		if (postId != other.postId)
+			return false;
+		if (usersId != other.usersId)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Messages [id=" + id + ", authorId=" + authorId + ", title=" + title + ", content=" + content + "]";
+		return "Comments [id=" + id + ", usersId=" + usersId + ", postId=" + postId + ", content=" + content + "]";
 	}
 	
 }
