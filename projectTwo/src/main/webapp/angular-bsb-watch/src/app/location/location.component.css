@@ -17,6 +17,10 @@ body {
     align-items: center;
   }
 
+  .container {
+    margin-left: 160px
+  }
+
   .card {
     display: flex;
     overflow-x: auto;

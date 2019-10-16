@@ -11,6 +11,7 @@ import { LatestPhotosComponent } from './latest-photos/latest-photos.component';
 import { LatestBlogPostsComponent } from './latest-blog-posts/latest-blog-posts.component';
 import { PopularSectionComponent } from './popular-section/popular-section.component';
 import { LocationComponent } from './location/location.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'location', component: LocationComponent },
   { path: '', redirectTo: '/profile', pathMatch: 'full' },
   { path: 'profile/:id', component: UserProfileDetailsComponent },
+  { path: 'login', component: LoginComponent },
 ]
 
 

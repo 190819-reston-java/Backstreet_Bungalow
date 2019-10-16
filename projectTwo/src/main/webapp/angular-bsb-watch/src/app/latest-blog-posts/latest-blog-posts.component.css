@@ -12,6 +12,10 @@ body {
     align-items: center;
   }
 
+  .container {
+    margin-left: 160px
+  }
+
   .card {
     display: flex;
     overflow-x: auto;
@@ -22,13 +26,14 @@ body {
   }
 
   .card--content {
-    background-color: #e74c3c;
     background: transparent;
     border: solid;
     min-width: 300px;
     margin: 5px;
   }
-
+  
   .card::-webkit-scrollbar {
     display: none;
   }
+
+ 
