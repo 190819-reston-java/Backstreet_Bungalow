@@ -14,7 +14,7 @@ public class Driver {
 
 		UsersDAO usersDAO = (UsersDAO) ac.getBean("usersDAO");
 		
-		Users example = usersDAO.getOne(1);
+		Users example = usersDAO.getOneUser(1);
 		
 		System.out.println(example);
 	}
