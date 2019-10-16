@@ -26,7 +26,4 @@ export class UserProfileDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  save(){
-    
-  }
 }

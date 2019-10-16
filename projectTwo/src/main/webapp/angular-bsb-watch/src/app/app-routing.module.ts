@@ -12,6 +12,8 @@ import { LatestBlogPostsComponent } from './latest-blog-posts/latest-blog-posts.
 import { PopularSectionComponent } from './popular-section/popular-section.component';
 import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
+import { RegistrationUserComponent } from './registration-user/registration-user.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/profile', pathMatch: 'full' },
   { path: 'profile/:id', component: UserProfileDetailsComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationUserComponent}
 ]
 
 

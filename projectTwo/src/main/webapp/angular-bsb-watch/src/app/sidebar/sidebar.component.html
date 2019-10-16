@@ -1,9 +1,11 @@
 <div id="mySidenav" class="sidenav container">
-    <a routerLink="#section1" id="profile-button">Profile</a>
-    <a href="#section2" id="articles-button">Articles</a>
-    <a href="#section3" id="member-button">Members</a>
-    <a href="#section4" id="popular-button">Popular</a>
-    <a href="#section5" id="photos-button">Photos</a>
+    <a routerLink="login">Login</a>
+    <a routerLink="register">Register</a>
+    <a *ngIf="this.loggedIn" routerLink="profile" id="profile-button" (click)="changeLogin()">Profile</a>
+    <a routerLink="#section2" id="articles-button">Articles</a>
+    <a routerLink="#section3" id="member-button">Members</a>
+    <a routerLink="#section4" id="popular-button">Popular</a>
+    <a routerLink="#section5" id="photos-button">Photos</a>
     <a routerLink="blog-posts" fragment="#section6" id="blogs-button">Blogs</a>
-    <a href="#section7" id="location-button">Bungalow</a>
+    <a routerLink="#section7" id="location-button">Bungalow</a>
   </div>
