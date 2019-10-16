@@ -52,4 +52,11 @@ public class FrontController {
 		Boolean b = services.updateUser(request);
 		return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
+	
+	@GetMapping("/addNewUser")
+	@ResponseBody
+	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) {
+		Boolean b = services.addNewUser(request);
+		return ResponseEntity.status(HttpStatus.OK).body(b);
+	}
 }

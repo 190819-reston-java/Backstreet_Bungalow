@@ -51,7 +51,7 @@ public class Services {
 		
 	}
 	
-	public boolean createNewUser(HttpServletRequest request) {
+	public boolean addNewUser(HttpServletRequest request) {
 		Users u = null;
 		u.setId(Long.valueOf(request.getParameter("id")));
 		u.setFirstName(request.getParameter("firstname"));
