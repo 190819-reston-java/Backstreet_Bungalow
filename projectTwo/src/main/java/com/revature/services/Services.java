@@ -51,4 +51,17 @@ public class Services {
 		
 	}
 	
+	public boolean createNewUser(HttpServletRequest request) {
+		Users u = null;
+		u.setId(Long.valueOf(request.getParameter("id")));
+		u.setFirstName(request.getParameter("firstname"));
+		u.setLastName(request.getParameter("lastname"));
+		u.setUsername(request.getParameter("username"));
+		u.setEmail(request.getParameter("email"));
+		u.setPassword(request.getParameter("password"));
+		u.setShowInfo(Boolean.valueOf(request.getParameter("showinfo")));
+		return usersDAO.addNewUser(u);
+		
+	}
+	
 }
