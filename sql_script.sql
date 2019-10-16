@@ -21,6 +21,14 @@ CREATE TABLE Activity (
 	views INTEGER NOT NULL
 );
 
+drop table comment_mapper
+CREATE TABLE comment_mapper (
+
+	id SERIAL primary key,
+	type varchar(5) not null
+
+);
+
 DROP TABLE posts;
 CREATE TABLE Posts (
 
@@ -97,6 +105,7 @@ CREATE TABLE Photos (
 
 	photo_id INT PRIMARY KEY REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
+	status boolean NOT NULL,
 	img bytea NOT NULL
 	-- num_of_comments is moved here for the same reason
 	-- that's it's moved into the Posts table.

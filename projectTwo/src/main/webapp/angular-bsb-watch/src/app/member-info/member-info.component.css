@@ -1,0 +1,19 @@
+html {
+    text-align: center;
+}
+
+#picture-name-container,
+#member-bio-container {
+    display: inline-block;
+    border: solid;
+    height: 55%;
+    width: 40%;
+    /* margin: 0px auto; */
+}
+
+#member-info-container {
+    text-align: center;
+    height: 95%;
+    width: 95%;
+    /* margin-top: 0 auto; */
+}

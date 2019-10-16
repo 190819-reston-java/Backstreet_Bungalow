@@ -2,9 +2,7 @@ package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -14,8 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessagesMap {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@OneToOne
 	@Column(name="message_id")
 	private long id;
 	
