@@ -6,15 +6,29 @@ import { Observable, of } from 'rxjs';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private httpClient: HttpClient) { }
+  url = "user/update"
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) { }
   
-  public getUser(){
-    return this.httpClient.get('/user/info')
+  public getUser(user: User){
+    return this.http.get('/user/info')
+  }
+
+  updateUser (user: User): Observable<any> {
+    return this.http.put(this.url, user, this.httpOptions)
+  }
+
+  createUser(user: User) {
+
   }
 
 }

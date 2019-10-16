@@ -33,6 +33,7 @@ import { AgmCoreModule } from '@agm/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule }    from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegistrationUserComponent } from './registration-user/registration-user.component';
 
 
 
@@ -64,7 +65,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserProfileDetailsComponent,
     SingleUserPhotosComponent,
     MemberSectionComponent,
-    PopularSectionComponent
+    PopularSectionComponent,
+    RegistrationUserComponent
   ],
   imports: [
     BrowserModule,
