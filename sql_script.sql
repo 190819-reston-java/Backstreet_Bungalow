@@ -21,6 +21,14 @@ CREATE TABLE Activity (
 	views INTEGER NOT NULL
 );
 
+drop table comment_mapper
+CREATE TABLE comment_mapper (
+
+	id SERIAL primary key,
+	type varchar(5) not null
+
+);
+
 DROP TABLE posts;
 CREATE TABLE Posts (
 
