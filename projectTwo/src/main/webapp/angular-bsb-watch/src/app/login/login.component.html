@@ -1,10 +1,17 @@
 <!-- <div>
     <img ng-src="{{loginImage}}" alt="bb4" height="100" width="100">
 </div> -->
-<div class="loginContainer">
-    <form class="login" (click)="onSubmit()">
-        <input type="text" class="username" name="username" placeholder="Username" required>
-        <input type="password" class="password" name="password" placeholder="Password" required>
-        <input type="submit">
-    </form>
-</div>
+<body background="../../assets/images/bb6.jpg">
+    <div class="container row">
+        <h1 class="heading">Login Below</h1>
+    </div>
+    <div class="container">
+        <form class="login" (click)="onSubmit()">
+            <h5>Enter Username:</h5>
+            <input type="text" class="username" name="username" placeholder="Username" required>
+            <h5>Enter Password:</h5>
+            <input type="password" class="password" name="password" placeholder="Password" required>
+            <input type="submit" (click)="loggedIn()">
+        </form>
+    </div>
+</body>

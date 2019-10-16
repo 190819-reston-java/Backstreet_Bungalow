@@ -1,3 +1,11 @@
 .container {
     margin-left: 160px;
+    background-color: hsla(0, 33%, 46%, 0.342);
+
+}
+
+.transparent-background {
+    background-color: hsla(0, 0%, 100%, 0.342);
+    margin: 20px 10px;
+    padding: 10px;
 }
