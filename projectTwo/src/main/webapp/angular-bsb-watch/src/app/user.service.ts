@@ -12,23 +12,28 @@ import { Observable, of } from 'rxjs';
 })
 export class UserService {
 
-  url = "user/update"
+  
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  
 
   constructor(private http: HttpClient) { }
+
+   
   
-  public getUser(user: User){
-    return this.http.get('/user/info')
+  public getUser(user: User, url: string){
+    
   }
 
-  updateUser (user: User): Observable<any> {
-    return this.http.put(this.url, user, this.httpOptions)
+  public updateUser (user: User, url: string): Observable<any> {
+    return this.http.put(url, user, this.httpOptions)
   }
 
-  createUser(user: User) {
-
+  public createUser (user: User, url: string): Observable<any> {
+    return this.http.post(url, user, this.httpOptions)
   }
+
+  
 
 }
