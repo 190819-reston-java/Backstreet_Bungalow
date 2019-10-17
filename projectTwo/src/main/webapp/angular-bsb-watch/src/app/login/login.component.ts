@@ -18,12 +18,12 @@ export class LoginComponent implements OnInit {
   }
 
   private loginURL = 'localhost:8080/login';
-  private user: User;
-
+  
+  private user: User = new User();
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
-  onSubmit(user: User)  {
-    let observable = this.http.post(this.loginURL, JSON.stringify(user.username))
+  onSubmit()  {
+    let observable = this.http.post(this.loginURL, JSON.stringify(this.user.username))
     observable.subscribe((result: any) => {this.currentUser.user = result;
     })
   }

@@ -8,9 +8,4 @@ export class BlogPost{
     body: string;
     user: User;
 
-    cs = new CurrentUserService;
-
-    setUser() {
-        this.user = this.cs.getUser();
-    }
 }
