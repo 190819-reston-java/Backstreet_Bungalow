@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -14,11 +16,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Photos {
 
-	@OneToOne
-	@Column(name="photo_id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
 	
-	@OneToOne
+	@Column(name="photo_id")
+	private long photoId;
+	
 	@Column(name="users_id")
 	private long usersId;
 	
@@ -32,9 +37,10 @@ public class Photos {
 		super();
 	}
 
-	public Photos(long id, long usersId, boolean status, byte[] img) {
+	public Photos(long id, long photoId, long usersId, boolean status, byte[] img) {
 		super();
 		this.id = id;
+		this.photoId = photoId;
 		this.usersId = usersId;
 		this.status = status;
 		this.img = img;
@@ -46,6 +52,14 @@ public class Photos {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public long getPhotoId() {
+		return photoId;
+	}
+
+	public void setPhotoId(long photoId) {
+		this.photoId = photoId;
 	}
 
 	public long getUsersId() {
@@ -78,6 +92,7 @@ public class Photos {
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + Arrays.hashCode(img);
+		result = prime * result + (int) (photoId ^ (photoId >>> 32));
 		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + (int) (usersId ^ (usersId >>> 32));
 		return result;
@@ -96,6 +111,8 @@ public class Photos {
 			return false;
 		if (!Arrays.equals(img, other.img))
 			return false;
+		if (photoId != other.photoId)
+			return false;
 		if (status != other.status)
 			return false;
 		if (usersId != other.usersId)
@@ -105,8 +122,8 @@ public class Photos {
 
 	@Override
 	public String toString() {
-		return "Photos [id=" + id + ", usersId=" + usersId + ", status=" + status + ", img=" + Arrays.toString(img)
-				+ "]";
+		return "Photos [id=" + id + ", photoId=" + photoId + ", usersId=" + usersId + ", status=" + status + ", img="
+				+ Arrays.toString(img) + "]";
 	}
 
 	

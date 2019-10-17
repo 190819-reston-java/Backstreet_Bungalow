@@ -69,9 +69,9 @@ A user can see their their local 'Backstreet Bungalow'
 	}
 	
 	@Transactional
-	public Users getOneUser(long id) {
+	public Users getOneUser(String username) {
 		Session s = sf.getCurrentSession();
-		Users a = (Users) s.get(Users.class, id);
+		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username));
 		
 		return a;
 	}
