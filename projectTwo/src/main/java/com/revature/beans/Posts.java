@@ -30,22 +30,18 @@ public class Posts {
 	
 	@Column(name="content")
 	private String content;
-	
-	@Column(name="num_of_comments")
-	private long numOfComments;
 
 	public Posts() {
 		super();
 	}
 
-	public Posts(long id, long postId, String userId, String title, String content, long numOfComments) {
+	public Posts(long id, long postId, String userId, String title, String content) {
 		super();
 		this.id = id;
 		this.postId = postId;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
-		this.numOfComments = numOfComments;
 	}
 
 	public long getId() {
@@ -125,8 +121,6 @@ public class Posts {
 			return false;
 		if (id != other.id)
 			return false;
-		if (numOfComments != other.numOfComments)
-			return false;
 		if (postId != other.postId)
 			return false;
 		if (title == null) {
@@ -145,7 +139,7 @@ public class Posts {
 	@Override
 	public String toString() {
 		return "Posts [id=" + id + ", postId=" + postId + ", userId=" + userId + ", title=" + title + ", content="
-				+ content + ", numOfComments=" + numOfComments + "]";
+				+ content + "]";
 	}
 
 	

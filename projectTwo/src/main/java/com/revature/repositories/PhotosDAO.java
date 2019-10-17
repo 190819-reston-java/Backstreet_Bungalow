@@ -57,10 +57,6 @@ public class PhotosDAO {
 		
 		Session s = sf.getCurrentSession();
 		
-		
-		byte[] img = ImageToByte(file);
-		long userId = user.getId();
-		
 		Photos photo = new Photos();
 		photo.setUsersId(user.getId());
 		photo.setImg(ImageToByte(file));
