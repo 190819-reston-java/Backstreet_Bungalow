@@ -17,12 +17,15 @@ export class RegistrationUserComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  user: User = new User();
    
   user: User = new User();
 
   registerUrl: string = "localhost:4200/register/new";
 
-  onSubmit(user: User)  {
+
+  onSubmit()  {
     let observable = this.http.post(this.registerUrl, JSON.stringify(this.user))
     observable.subscribe((result: any) => {this.currentUser.user = result;
     })

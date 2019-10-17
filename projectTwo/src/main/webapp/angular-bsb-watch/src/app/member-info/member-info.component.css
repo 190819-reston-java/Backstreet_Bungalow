@@ -10,11 +10,16 @@
     overflow-wrap: normal;
 }
 
-
-/*
-.card-deck div {
+.card-deck>div {
     width: 400;
     height: 250;
-    background-color: red;
+    max-width: 550px;
+    background-color: rgba(119, 136, 153, 0.747);
     margin-top: 100px;
-} */
+    border: 1px solid black;
+    margin: 10px;
+}
+
+img {
+    max-height: 100%;
+}
