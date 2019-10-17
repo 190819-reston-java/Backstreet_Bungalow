@@ -1,12 +1,17 @@
 package com.revature.services;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Users;
 import com.revature.repositories.UsersDAO;
 
@@ -23,22 +28,27 @@ public class Services {
 		super();
 	}
 	
-	public boolean login(HttpServletRequest request) {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		if (usersDAO.login(username, password, request)) {
-			return true;
-		}
-		else
-			return false;
+	public Users login(HttpServletRequest request) throws ServletException, IOException {
+		Users u = null;
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		String password = u.getPassword();
+		String username = u.getUsername();
+		u = usersDAO.login(username, password, request);
+		return u;
 	}
 	
 	public List<Users> getAllUsers() {
 		return usersDAO.getAllUsers();
 	}
 	
-	public Users getOneUser(String username) {
-		return usersDAO.getOneUser(username);
+	public Users getOneUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		Users u = null;
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		String username = u.getUsername();
+		u = usersDAO.getOneUser(username);
+		return u;
 	}
 
 	public boolean updateUser(HttpServletRequest request) {
