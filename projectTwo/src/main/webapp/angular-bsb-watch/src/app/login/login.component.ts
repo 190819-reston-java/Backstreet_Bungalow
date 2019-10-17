@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
-  onSubmit(user: User)  {
-    let observable = this.http.post(this.loginURL, JSON.stringify(user.username))
+  onSubmit()  {
+    let observable = this.http.post(this.loginURL, JSON.stringify(this.user.username))
     observable.subscribe((result: any) => {this.currentUser.user = result;
     })
   }
