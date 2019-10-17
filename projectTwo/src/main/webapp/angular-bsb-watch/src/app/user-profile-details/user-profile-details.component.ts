@@ -13,8 +13,14 @@ import { CurrentUserService } from '../current-user.service';
 })
 export class UserProfileDetailsComponent implements OnInit {
 
+<<<<<<< HEAD
   
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+=======
+  user= USER;
+
+  constructor(private http: HttpClient) { }
+>>>>>>> f922c39d506bfac5233bcc02ce3fc2fa71fcb01c
 
   private updateUrl: string = "localhost:8080/user/update";
 
