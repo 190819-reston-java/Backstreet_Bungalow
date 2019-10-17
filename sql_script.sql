@@ -21,10 +21,18 @@ CREATE TABLE Activity (
 	views INTEGER NOT NULL
 );
 
+drop table comment_mapper
+CREATE TABLE comment_mapper (
 
+	id SERIAL primary key,
+	type varchar(5) not null
+
+);
+
+DROP TABLE posts;
 CREATE TABLE Posts (
 
-	post_id INT PRIMARY KEY REFERENCES Activity(id),
+	post_id INT REFERENCES Activity(id),
 	users_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(50) NOT NULL,
 	content VARCHAR NOT NULL,
@@ -35,13 +43,12 @@ CREATE TABLE Posts (
 	-- comments aren't technically posts.
 );
 
---drop table comments;
+drop table comments;
 
 CREATE TABLE Comments (
 
-	comment_id INT PRIMARY KEY REFERENCES Activity(id), 
+	comment_id INT REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
-	post_id INT REFERENCES posts(post_id) NOT NULL,
 	content VARCHAR NOT NULL
 
 );
@@ -77,29 +84,29 @@ drop table messages;
 CREATE TABLE Messages (
 
 	id SERIAL PRIMARY KEY, 
-	author_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(100) NOT NULL,
 	content VARCHAR(500) NOT NULL
 
 );
 
+DROP TABLE Messages_map;
 CREATE TABLE Messages_map (
 	
 	message_id INT REFERENCES Messages(id),
-	author_id INT,
+	author_id INT REFERENCES users(id),
 	reciever_id INT CHECK(same_user(reciever_id,author_id) = false),
 	is_sent BOOLEAN NOT NULL,
 	is_in_trash BOOLEAN NOT NULL
 
 );
 
+DROP TABLE photos;
 CREATE TABLE Photos (
 
 	photo_id INT PRIMARY KEY REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
-	content_desc VARCHAR NOT NULL,
-	content_hash VARCHAR NOT null,
-	num_of_comments INTEGER NOT null
+	status boolean NOT NULL,
+	img bytea NOT NULL
 	-- num_of_comments is moved here for the same reason
 	-- that's it's moved into the Posts table.
 

@@ -1,8 +1,8 @@
 <div id="mySidenav" class="sidenav container">
     <a routerLink="login">Login</a>
     <a routerLink="register">Register</a>
-    <a *ngIf="this.loggedIn" routerLink="profile" id="profile-button" (click)="changeLogin()">Profile</a>
-    <a routerLink="articles" id="articles-button">Articles</a>
+    <a *ngIf="this.loggedIn" routerLink="profile" id="profile-button">Profile</a>
+    <a routerLink="latest-articles" id="articles-button">Articles</a>
     <a routerLink="members" id="member-button">Members</a>
     <a routerLink="popular" id="popular-button">Popular</a>
     <a routerLink="photos" id="photos-button">Photos</a>
