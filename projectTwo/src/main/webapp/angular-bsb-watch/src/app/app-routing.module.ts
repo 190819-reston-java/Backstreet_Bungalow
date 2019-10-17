@@ -13,12 +13,14 @@ import { PopularSectionComponent } from './popular-section/popular-section.compo
 import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 import { AppComponent } from './app.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
+
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
-  { path: 'latest-articles', component: LatestArticlesComponent },
+  { path: 'articles', component: LatestArticlesComponent },
   { path: 'members', component: MemberSectionComponent },
   { path: 'music', component: MusicInfoComponent },
   { path: 'photos', component: LatestPhotosComponent },
@@ -30,7 +32,8 @@ const routes: Routes = [
   { path: 'main', component: AppComponent },
   { path: 'profile/:id', component: UserProfileDetailsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationUserComponent}
+  { path: 'register', component: RegistrationUserComponent},
+  { path: 'newblogpost', component: BlogPostComponent}
 ]
 
 

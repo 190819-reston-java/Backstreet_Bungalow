@@ -1,0 +1,25 @@
+<body background="../../assets/images/bb4.jpg">
+    <div class="container">
+        <div class="post-form">
+            <h1>Blog Post!</h1>
+            <label class="section-title">
+                <h5>New Blog Post</h5>
+            </label>
+            <div class><span>Subject: </span></div>
+            <div>
+                <label>
+                    <input [(ngModel)]="post.subject" placeholder="subject"/>
+                </label>
+            </div>
+            <div class><span>Post: </span></div>
+            <div id="body">
+                <label>
+                </label>
+                <textarea class="form-control" rows="10" [(ngModel)]="post.body"></textarea>
+            </div>
+            <div>
+                <button (click)="save(this.post)">Post</button>
+            </div>
+         </div>   
+    </div>
+</body>

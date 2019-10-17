@@ -1,0 +1,11 @@
+.container {
+    margin-left: 160px;
+    background-color: hsla(0, 33%, 46%, 0.342);
+    padding: 50px;
+
+}
+
+.post-form {
+    background-color: #efeff0;
+    padding: 20px;
+}
