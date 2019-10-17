@@ -21,6 +21,7 @@ import com.revature.services.Services;
 @Controller
 public class FrontController {
 
+	
 	@Autowired
 	private Services services;
 	
@@ -35,9 +36,8 @@ public class FrontController {
 	@PostMapping("/getOneUser")
 	@ResponseBody
 	public ResponseEntity<Users> getOneUser(HttpServletRequest request, HttpServletResponse response) {
-		String a = request.getParameter("id");
-		Long id = Long.valueOf(a);
-		return ResponseEntity.status(HttpStatus.OK).body(services.getOneUser(id));
+		String a = request.getParameter("username");
+		return ResponseEntity.status(HttpStatus.OK).body(services.getOneUser(a));
 	}
 	
 	@GetMapping("/getAllUsers")

@@ -37,8 +37,8 @@ public class Services {
 		return usersDAO.getAllUsers();
 	}
 	
-	public Users getOneUser(long id) {
-		return usersDAO.getOneUser(id);
+	public Users getOneUser(String username) {
+		return usersDAO.getOneUser(username);
 	}
 
 	public boolean updateUser(HttpServletRequest request) {
