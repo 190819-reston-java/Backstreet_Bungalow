@@ -61,7 +61,7 @@ A user can see their their local 'Backstreet Bungalow'
 		}
 		else {
 			Users u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username))
-					.add(Restrictions.eq("password", password));
+					.add(Restrictions.eq("password", password)).uniqueResult();
 			long id = u.getId();
 			request.getSession().setAttribute("id", id);
 			return true;
@@ -71,7 +71,7 @@ A user can see their their local 'Backstreet Bungalow'
 	@Transactional
 	public Users getOneUser(String username) {
 		Session s = sf.getCurrentSession();
-		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username));
+		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username)).uniqueResult();
 		
 		return a;
 	}
