@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.revature.beans.Photos;
+import com.revature.beans.Users;
 
 @Repository
 public class PhotosDAO {
@@ -51,9 +52,19 @@ public class PhotosDAO {
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean addNewphoto(Photos photo) {
+	public boolean addNewphoto(File file, Users user) {
+		
 		
 		Session s = sf.getCurrentSession();
+		
+		
+		byte[] img = ImageToByte(file);
+		long userId = user.getId();
+		
+		Photos photo = new Photos();
+		photo.setUsersId(user.getId());
+		photo.setImg(ImageToByte(file));
+		
 		try {
 			s.save(photo);
 		} catch (Exception e) {
