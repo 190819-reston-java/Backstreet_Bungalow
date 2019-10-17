@@ -1,19 +1,20 @@
-html {
-    text-align: center;
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /* white-space: nowrap; */
+    margin-left: 160px;
 }
 
-#picture-name-container,
-#member-bio-container {
-    display: inline-block;
-    border: solid;
-    height: 55%;
-    width: 40%;
-    /* margin: 0px auto; */
+.p {
+    overflow-y: auto;
+    overflow-wrap: normal;
 }
 
-#member-info-container {
-    text-align: center;
-    height: 95%;
-    width: 95%;
-    /* margin-top: 0 auto; */
-}
+
+/*
+.card-deck div {
+    width: 400;
+    height: 250;
+    background-color: red;
+    margin-top: 100px;
+} */

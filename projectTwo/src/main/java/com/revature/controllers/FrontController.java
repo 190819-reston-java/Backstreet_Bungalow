@@ -38,6 +38,16 @@ public class FrontController {
 			return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
+	//****Needs validation****//
+	@PostMapping("/logout")
+	@ResponseBody
+	public ResponseEntity<Boolean> logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath() + "SomethingSomething.html");
+		return ResponseEntity.status(HttpStatus.OK).body(true);
+	}
+	
 	@PostMapping("/getOneUser")
 	@ResponseBody
 	public ResponseEntity<Users> getOneUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
@@ -55,17 +65,23 @@ public class FrontController {
 		return ResponseEntity.status(HttpStatus.OK).body(services.getAllUsers());
 	}
 	
-	@GetMapping("/updateUser")
+	@PostMapping("/updateUser")
 	@ResponseBody
-	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.updateUser(request);
-		return ResponseEntity.status(HttpStatus.OK).body(b);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
 	
-	@GetMapping("/addNewUser")
+	@PostMapping("/addNewUser")
 	@ResponseBody
-	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.addNewUser(request);
-		return ResponseEntity.status(HttpStatus.OK).body(b);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
 }

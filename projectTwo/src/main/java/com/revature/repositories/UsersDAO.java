@@ -18,86 +18,56 @@ import com.revature.beans.Users;
 
 @Repository
 public class UsersDAO {
-	
-	
-	/*
-	 * A user can login
-A user can logout
-A user can register
-A user can update their account information
-A user can upload photos
-A user can view a list of recently uploaded photos
-A user can view basic bio on each band member
-A user can upload blog posts
-A user can view a list of recently uploaded blog posts
-A user can view all photos from another user
-A user can view all blog posts from another user
-A user can view their profile
-A user can view another's user profile
-A user can see their their local 'Backstreet Bungalow'
-(Optional) A user can view all photos uploaded by all users
-(Optional) A user can view a list of the most popular posts
-(Optional) A user can comment on photos
-(Optional) A user can comment on blog posts
-(Optional) A user can view a feed of twitter posts that include 'backstreet boys'
-(Optional) A user can upload a photo with a blog post
-	 */
-	
+
 	@Autowired
 	private SessionFactory sf;
-	
-	/*
-	 * User Stories:
-	 * A user can login
-	 * A user can logout
-	 */
-	
+
 	@Transactional
 	public Users login(String username, String password, HttpServletRequest request) {
 		Session s = sf.getCurrentSession();
 		Users u = null;
-		
-		/*
-		 * if (s.createCriteria(Users.class).add(Restrictions.eq("username", username))
-		 * .add(Restrictions.eq("password", password)) == null) { return null; } else {
-		 */
-			u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username))
-					.add(Restrictions.eq("password", password)).uniqueResult();
-			if (u == null)
-				return null;
-			else {
-				long id = u.getId();
-				request.getSession().setAttribute("id", id);
-				return u;
-			}
-	//	}
+
+		u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username))
+				.add(Restrictions.eq("password", password)).uniqueResult();
+		if (u == null)
+			return null;
+		else {
+			long id = u.getId();
+			request.getSession().setAttribute("id", id);
+			return u;
+		}
 	}
-	
+
 	@Transactional
 	public Users getOneUser(String username) {
 		Session s = sf.getCurrentSession();
-		
+
 		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username)).uniqueResult();
 		if (a == null)
 			return null;
 		else
 			return a;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Users> getAllUsers() {
 		Session s = sf.getCurrentSession();
-		
+
 		@SuppressWarnings("unchecked")
 		List<Users> users = s.createCriteria(Users.class).list();
-		
+
 		return users;
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean updateUser(Users user) {
 		Session s = sf.getCurrentSession();
-		Users u = (Users) s.get(Users.class, user.getId());
+		if (s.createCriteria(Users.class).add(Restrictions.eq("username", user.getUsername())).uniqueResult() != null)
+			return false;
+		if (s.createCriteria(Users.class).add(Restrictions.eq("email", user.getEmail())).uniqueResult() != null)
+			return false;
+		Users u = null;
+		u = (Users) s.get(Users.class, user.getId());
 		if (user.getFirstName() != null)
 			u.setFirstName(user.getFirstName());
 		if (user.getLastName() != null)
@@ -108,8 +78,6 @@ A user can see their their local 'Backstreet Bungalow'
 			u.setEmail(user.getEmail());
 		if (user.getPassword() != null)
 			u.setPassword(user.getPassword());
-		if (user.isShowInfo())
-			u.setShowInfo(user.isShowInfo());
 		try {
 			s.persist(u);
 			return true;
@@ -117,17 +85,24 @@ A user can see their their local 'Backstreet Bungalow'
 			return false;
 		}
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewUser(Users user) {
-		
+
 		Session s = sf.getCurrentSession();
+		if (user.getFirstName() == null || user.getLastName() == null || user.getUsername() == null
+				|| user.getEmail() == null || user.getPassword() == null)
+			return false;
+		if (s.createCriteria(Users.class).add(Restrictions.eq("username", user.getUsername())).uniqueResult() != null)
+			return false;
+		if (s.createCriteria(Users.class).add(Restrictions.eq("email", user.getEmail())).uniqueResult() != null)
+			return false;
 		try {
 			s.save(user);
 		} catch (Exception e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 

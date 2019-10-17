@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Users;
+import com.revature.repositories.PhotosDAO;
+import com.revature.repositories.PostsDAO;
 import com.revature.repositories.UsersDAO;
 
 @Service
@@ -20,9 +23,8 @@ public class Services {
 
 	@Autowired
 	private UsersDAO usersDAO;
-	
-	@Autowired
-	//private 
+	private PostsDAO postsDAO;
+	private PhotosDAO photosDAO;
 	
 	public Services() {
 		super();
@@ -51,30 +53,26 @@ public class Services {
 		return u;
 	}
 
-	public boolean updateUser(HttpServletRequest request) {
+	public boolean updateUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Users u = null;
-		u.setId(Long.valueOf(request.getParameter("id")));
-		u.setFirstName(request.getParameter("firstname"));
-		u.setLastName(request.getParameter("lastname"));
-		u.setUsername(request.getParameter("username"));
-		u.setEmail(request.getParameter("email"));
-		u.setPassword(request.getParameter("password"));
-		u.setShowInfo(Boolean.valueOf(request.getParameter("showinfo")));
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
 		return usersDAO.updateUser(u);
 		
 	}
 	
-	public boolean addNewUser(HttpServletRequest request) {
+	public boolean addNewUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Users u = null;
-		u.setId(Long.valueOf(request.getParameter("id")));
-		u.setFirstName(request.getParameter("firstname"));
-		u.setLastName(request.getParameter("lastname"));
-		u.setUsername(request.getParameter("username"));
-		u.setEmail(request.getParameter("email"));
-		u.setPassword(request.getParameter("password"));
-		u.setShowInfo(Boolean.valueOf(request.getParameter("showinfo")));
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		System.out.println(u.toString());
+		u.setId(0);
 		return usersDAO.addNewUser(u);
 		
 	}
 	
+	public boolean addNewphoto(File file, HttpServletRequest request) {
+		//photosDAO.addNewphoto(file, request)
+		return false;
+	}
 }
