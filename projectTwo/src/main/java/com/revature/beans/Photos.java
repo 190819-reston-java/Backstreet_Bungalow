@@ -21,15 +21,9 @@ public class Photos {
 	@Column(name="id")
 	private long id;
 	
-	@Column(name="photo_id")
-	private long photoId;
-	
 	@Column(name="users_id")
 	private long usersId;
-	
-	@Column(name="status")
-	private boolean status;
-	
+		
 	@Column(name="img")
 	private byte[] img;
 
@@ -37,12 +31,10 @@ public class Photos {
 		super();
 	}
 
-	public Photos(long id, long photoId, long usersId, boolean status, byte[] img) {
+	public Photos(long id, long usersId, byte[] img) {
 		super();
 		this.id = id;
-		this.photoId = photoId;
 		this.usersId = usersId;
-		this.status = status;
 		this.img = img;
 	}
 
@@ -54,28 +46,12 @@ public class Photos {
 		this.id = id;
 	}
 
-	public long getPhotoId() {
-		return photoId;
-	}
-
-	public void setPhotoId(long photoId) {
-		this.photoId = photoId;
-	}
-
 	public long getUsersId() {
 		return usersId;
 	}
 
 	public void setUsersId(long usersId) {
 		this.usersId = usersId;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public byte[] getImg() {
@@ -92,8 +68,6 @@ public class Photos {
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + Arrays.hashCode(img);
-		result = prime * result + (int) (photoId ^ (photoId >>> 32));
-		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + (int) (usersId ^ (usersId >>> 32));
 		return result;
 	}
@@ -111,10 +85,6 @@ public class Photos {
 			return false;
 		if (!Arrays.equals(img, other.img))
 			return false;
-		if (photoId != other.photoId)
-			return false;
-		if (status != other.status)
-			return false;
 		if (usersId != other.usersId)
 			return false;
 		return true;
@@ -122,10 +92,7 @@ public class Photos {
 
 	@Override
 	public String toString() {
-		return "Photos [id=" + id + ", photoId=" + photoId + ", usersId=" + usersId + ", status=" + status + ", img="
-				+ Arrays.toString(img) + "]";
+		return "Photos [id=" + id + ", usersId=" + usersId + ", img=" + Arrays.toString(img) + "]";
 	}
-
-	
 	
 }

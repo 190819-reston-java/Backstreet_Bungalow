@@ -22,10 +22,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.beans.Activity;
+
 import com.revature.beans.Photos;
-import com.revature.model.imageTest;
-import com.revature.utils.ConnectionUtil;
 
 @Repository
 public class PhotosDAO {
@@ -61,8 +59,6 @@ public class PhotosDAO {
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewphoto(Photos photo) {
-		
-		Activity n3w = new Activity();
 		
 		Session s = sf.getCurrentSession();
 		try {
