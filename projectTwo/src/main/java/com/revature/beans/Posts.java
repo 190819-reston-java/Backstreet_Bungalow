@@ -19,7 +19,6 @@ public class Posts {
 	@Column(name="id")
 	private long id;
 	
-	
 	@Column(name="users_id")
 	private String userId;
 	
