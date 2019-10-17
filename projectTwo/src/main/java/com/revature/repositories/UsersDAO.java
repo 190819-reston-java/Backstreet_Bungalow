@@ -110,7 +110,7 @@ A user can see their their local 'Backstreet Bungalow'
 		}
 	}
 	
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewUser(Users user) {
 		
 		Session s = sf.getCurrentSession();
