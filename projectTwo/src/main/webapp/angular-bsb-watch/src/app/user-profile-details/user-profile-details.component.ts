@@ -23,6 +23,16 @@ export class UserProfileDetailsComponent implements OnInit {
     console.log(user.email);
   }
 
+  
+  result: any;
+  UrlEndpoint: string = "localhost:4200/register/new";
+
+  submit(u: User) {
+    this.http.post(this.UrlEndpoint, JSON.stringify(u)).subscribe(
+      res => this.result = res)    
+  }
+
+
   ngOnInit() {
   }
 

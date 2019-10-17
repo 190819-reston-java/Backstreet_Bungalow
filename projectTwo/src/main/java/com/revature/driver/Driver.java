@@ -6,8 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.revature.beans.Users;
 import com.revature.repositories.UsersDAO;
 
-public class Driver {
-
+public class Driver {}
+/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -19,4 +19,4 @@ public class Driver {
 		System.out.println(example);
 	}
 
-}
+}*/

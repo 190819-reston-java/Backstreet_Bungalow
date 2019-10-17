@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "../user";
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -14,11 +15,14 @@ export class RegistrationUserComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  user: User;
-
-  submit() {
    
+  http: HttpClient;
+  result: any;
+  UrlEndpoint: string = "localhost:4200/register/new";
+
+  submit(u: User) {
+    this.http.post(this.UrlEndpoint, JSON.stringify(u)).subscribe(
+      res => this.result = res)    
   }
 
   save(user) {
