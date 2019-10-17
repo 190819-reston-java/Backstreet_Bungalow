@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserProfileDetailsComponent implements OnInit {
 
-  user= {};
+  user= USER;
 
   constructor(private http: HttpClient) { }
 
