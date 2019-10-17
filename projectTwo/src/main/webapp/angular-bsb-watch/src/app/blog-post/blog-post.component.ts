@@ -12,4 +12,8 @@ export class BlogPostComponent implements OnInit {
   ngOnInit() {
   }
 
+  save() {
+    
+  }
+
 }
