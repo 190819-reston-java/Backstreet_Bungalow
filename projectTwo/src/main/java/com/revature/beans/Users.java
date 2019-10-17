@@ -1,4 +1,4 @@
-package com.revature.models;
+package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +25,13 @@ public class Users {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name="username")
+	@Column(name="username", unique = true)
 	private String username;
 	
 	@Column(name="role")
 	private String role;
 	
-	@Column(name="email")
+	@Column(name="email", unique = true)
 	private String email;
 	
 	@Column(name="pswd")

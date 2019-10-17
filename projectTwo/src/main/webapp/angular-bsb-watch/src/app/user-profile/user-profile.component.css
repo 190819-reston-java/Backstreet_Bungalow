@@ -1,0 +1,21 @@
+.container {
+    margin-left: 160px;
+    background-color: hsla(0, 33%, 46%, 0.342);
+
+}
+
+.transparent-background {
+    background-color: hsla(0, 0%, 100%, 0.342);
+    margin: 20px 10px;
+    padding: 10px;
+}
+
+.router-button {
+    margin: 15px;
+    padding: 10 px;
+    background-color:  hsla(0, 0%, 100%, 0.342)1;
+}
+
+#body {
+    height: 100px;
+}

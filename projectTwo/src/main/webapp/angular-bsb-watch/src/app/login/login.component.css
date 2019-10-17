@@ -1,0 +1,39 @@
+.container{
+    margin-left: 20%;
+    padding: 15px;
+}.login {
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: rgba(77, 75, 75, 0.767);
+    margin-top: 50px;
+    padding: 25px;
+    padding-left: 17%;
+    
+}
+.login input {
+    margin: 5px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.heading {
+    padding: 0% 15%;
+    color: rgb(240, 235, 235);
+    background-color: rgba(77, 75, 75, 0.767);
+    margin: 0% 25%
+}
+
+h5 {
+    color: rgb(240, 235, 235);
+    padding-left: 5px;
+}
+
+.jumbotron {
+    background:  rgba(77, 75, 75, 0.767);
+    text-align: center;
+    color: white;
+}
+
+.row {
+    margin-left: 22%;
+}

@@ -1,1 +1,43 @@
-<p>user-profile-details works!</p>
+
+<div class="container">
+    <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}} Details</h2>
+    <div><span>ID: </span>{{user.id}}</div>
+    <div><span>First Name: </span>{{user.first_name}}</div>
+    <div>
+        <label>
+            <input [(ngModel)]="user.first_name" placeholder="firstname"/>
+        </label>
+    </div>
+    <div><span>Last Name: </span>{{user.last_name}}</div>
+    <div>
+        <label>
+            <input [(ngModel)]="user.last_name" placeholder="lastname"/>
+        </label>
+    </div>
+    <div><span>Username: </span>{{user.username}}</div>
+    <div>
+        <label>
+            <input [(ngModel)]="user.username" placeholder="username"/>
+        </label>
+    </div>
+    <div><span>Email: </span>{{user.email}}</div>
+    <div>
+        <label>
+            <input [(ngModel)]="user.email" placeholder="email"/>
+        </label>
+    </div>
+    <div><span>Password: </span></div>
+    <div>
+        <label>
+            <input type="password" [(ngModel)]="user.password" placeholder="Enter Password"/>
+        </label>
+    </div>
+    <!-- <div><span>Confirm Password: </span></div>
+    <div>
+        <label>
+            <input type="password" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password"/>
+        </label>
+    </div> -->
+    <button (click)="onSubmit(this.user)">Save</button>
+
+</div>

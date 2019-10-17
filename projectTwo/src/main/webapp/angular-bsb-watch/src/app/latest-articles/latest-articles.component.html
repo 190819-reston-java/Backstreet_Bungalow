@@ -1,3 +1,22 @@
+<body background="../../assets/images/bb7.jpg">
+    <!-- <div class="container">
+        <li *ngFor= "let article of news.articles; let i=index">
+            <div *ngIf= "i<5">
+                <h3><a href={{article.url}}>{{ article.title }}</a></h3>
+                <img src={{article.urltoimage}}><a href={{article.urltoimage}}>{{ article.title }}</a>
+            </div>
+        </li>
+        <app-twitter-feed></app-twitter-feed>
+    </div> -->
 
-<p>Inside latest articles</p>
-<app-twitter-feed></app-twitter-feed>
+    <div class="container">
+        <div class="grid grid-pad">
+            <a *ngFor="let article of news.articles; let i=index" class="col-1-4" href={{article.url}}>
+                <div *ngIf="i<6" class="module">
+                    <img src={{article.urlToImage}} height="250" width="250">
+                    <h4>{{article.title}}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>

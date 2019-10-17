@@ -1,10 +1,11 @@
-package com.revature.models;
+package com.revature.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -19,9 +20,6 @@ public class Messages {
 	@Column(name="id")
 	private long id;
 	
-	@Column(name="author_id")
-	private long authorId;
-	
 	@Column(name="title")
 	private String title;
 	
@@ -32,10 +30,9 @@ public class Messages {
 		super();
 	}
 
-	public Messages(long id, long authorId, String title, String content) {
+	public Messages(long id, String title, String content) {
 		super();
 		this.id = id;
-		this.authorId = authorId;
 		this.title = title;
 		this.content = content;
 	}
@@ -46,14 +43,6 @@ public class Messages {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getAuthorId() {
-		return authorId;
-	}
-
-	public void setAuthorId(long authorId) {
-		this.authorId = authorId;
 	}
 
 	public String getTitle() {
@@ -76,7 +65,6 @@ public class Messages {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (authorId ^ (authorId >>> 32));
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -92,8 +80,6 @@ public class Messages {
 		if (getClass() != obj.getClass())
 			return false;
 		Messages other = (Messages) obj;
-		if (authorId != other.authorId)
-			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
@@ -111,7 +97,7 @@ public class Messages {
 
 	@Override
 	public String toString() {
-		return "Messages [id=" + id + ", authorId=" + authorId + ", title=" + title + ", content=" + content + "]";
+		return "Messages [id=" + id + ", title=" + title + ", content=" + content + "]";
 	}
-	
+
 }

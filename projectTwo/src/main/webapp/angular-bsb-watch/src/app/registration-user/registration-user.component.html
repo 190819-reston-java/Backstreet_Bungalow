@@ -1,0 +1,43 @@
+<body background="../../assets/images/bb6.jpg">
+    <div class="container">
+        <h1>Enter Details Below!</h1>
+        
+        <div><span>First Name: </span>{{user.first_name}}</div>
+        <div>
+            <label>
+                <input [(ngModel)]="user.first_name" placeholder="firstname"/>
+            </label>
+        </div>
+        <div><span>Last Name: </span>{{user.last_name}}</div>
+        <div >
+            <label>
+                <input [(ngModel)]="user.last_name" placeholder="lastname"/>
+            </label>
+        </div>
+        <div><span>Email: </span>{{user.email}}</div>
+        <div>
+            <label>
+                <input [(ngModel)]="user.email" placeholder="email"/>
+            </label>
+        </div>
+        <div><span>Username: </span>{{user.username}}</div>
+        <div>
+            <label>
+                <input [(ngModel)]="user.username" placeholder="username"/>
+            </label>
+        </div>
+        <div><span>Enter Password: </span></div>
+        <div>
+            <label>
+                <input [(ngModel)]="user.password" placeholder="Create Password"/>
+            </label>
+        </div><div><span>Confirm Password: </span></div>
+        <div>
+            <label>
+                <input [(ngModel)]="user.confirmPassword" placeholder="Confirm Password"/>
+            </label>
+        </div>
+        <button (click)="onSubmit(this.user)">Save</button>
+
+    </div>
+</body>
