@@ -26,6 +26,18 @@
             <input [(ngModel)]="user.email" placeholder="email"/>
         </label>
     </div>
-    <button (click)="save(this.user)">Save</button>
+    <div><span>Password: </span></div>
+    <div>
+        <label>
+            <input type="password" [(ngModel)]="user.password" placeholder="Enter Password"/>
+        </label>
+    </div>
+    <div><span>Confirm Password: </span></div>
+    <div>
+        <label>
+            <input type="password" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password"/>
+        </label>
+    </div>
+    <button (click)="submit(this.user)">Save</button>
 
 </div>

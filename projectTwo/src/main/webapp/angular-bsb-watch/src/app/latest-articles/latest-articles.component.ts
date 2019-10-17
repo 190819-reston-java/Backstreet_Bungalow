@@ -8,18 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LatestArticlesComponent implements OnInit {
 
-  
-
   constructor(private http: HttpClient) { }
 
   news: any;
-  
+    
 
   ngOnInit() {
     let observable = this.http.get('https://newsapi.org/v2/everything?q=backstreetboys&apiKey=ace99d954335424582d108ce0a1872e4')
-    observable.subscribe((result => {
+    observable.subscribe(result => {
       this.news = result;
-    }))
-  }
+    })
+  } 
 
 }

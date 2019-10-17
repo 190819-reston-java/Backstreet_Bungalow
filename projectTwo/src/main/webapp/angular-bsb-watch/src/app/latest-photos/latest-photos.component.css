@@ -1,37 +1,50 @@
-html,
-.container {
-  margin-left: 160px
-}
 body {
+  margin-left: 160px;
+}
+
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
     width: 100%;
-    height: 100%;
+  }
 }
 
-body {
-    background-color: #8e44ad;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .card {
-    display: flex;
-    overflow-x: auto;
-    background-color: #fff;
-    background: transparent;
-    min-width: 100%;
-    min-height: 300px;
-  }
-
-  .card--content {
-    background-color: #e74c3c;
-    background: transparent;
-    border: solid;
-    min-width: 300px;
-    margin: 5px;
-  }
-
-  .card::-webkit-scrollbar {
-    display: none;
-  }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
