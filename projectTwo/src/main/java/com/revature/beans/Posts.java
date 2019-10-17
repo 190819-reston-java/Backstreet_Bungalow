@@ -30,9 +30,6 @@ public class Posts {
 	
 	@Column(name="content")
 	private String content;
-	
-	@Column(name="num_of_comments")
-	private long numOfComments;
 
 	public Posts() {
 		super();
