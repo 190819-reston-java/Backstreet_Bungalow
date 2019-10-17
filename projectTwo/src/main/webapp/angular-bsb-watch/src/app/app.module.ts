@@ -8,7 +8,6 @@ import { MusicInfoComponent } from './music-info/music-info.component';
 import { MemberInfoComponent } from './member-info/member-info.component';
 import { LatestPhotosComponent } from './latest-photos/latest-photos.component';
 import { LatestBlogPostsComponent } from './latest-blog-posts/latest-blog-posts.component';
-import { UploadPostComponent } from './upload-post/upload-post.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PopularPhotosComponent } from './popular-photos/popular-photos.component';
 import { PopularBlogPostsComponent } from './popular-blog-posts/popular-blog-posts.component';
@@ -47,7 +46,6 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     MemberInfoComponent,
     LatestPhotosComponent,
     LatestBlogPostsComponent,
-    UploadPostComponent,
     CommentsComponent,
     PopularPhotosComponent,
     PopularBlogPostsComponent,
