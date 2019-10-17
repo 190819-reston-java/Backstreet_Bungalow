@@ -17,24 +17,8 @@ export class LoginComponent implements OnInit {
     
   }
 
-<<<<<<< HEAD
-  private loginURL = '/login';
-
-  onSubmit() {
-    console.log("this works");
-  } 
-
-  loginImage:any = "assets\\images\\bb4.jpg";
-  title = 'app';
-
-
-  constructor(private http: HttpClient) { }
-
-  sidebar;
-=======
   private loginURL = 'localhost:8080/login';
   private user: User;
->>>>>>> b2ae4300029e7383df74339c241c538913b81666
 
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
