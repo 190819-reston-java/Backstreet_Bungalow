@@ -84,14 +84,6 @@ public class Posts {
 		this.content = content;
 	}
 
-	public long getNumOfComments() {
-		return numOfComments;
-	}
-
-	public void setNumOfComments(long numOfComments) {
-		this.numOfComments = numOfComments;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
