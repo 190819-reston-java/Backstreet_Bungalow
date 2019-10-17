@@ -53,27 +53,35 @@ A user can see their their local 'Backstreet Bungalow'
 	 */
 	
 	@Transactional
-	public boolean login(String username, String password, HttpServletRequest request) {
+	public Users login(String username, String password, HttpServletRequest request) {
 		Session s = sf.getCurrentSession();
-		if (s.createCriteria(Users.class).add(Restrictions.eq("username", username))
-			.add(Restrictions.eq("password", password)) == null) {
-			return false;
-		}
-		else {
-			Users u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username))
+		Users u = null;
+		
+		/*
+		 * if (s.createCriteria(Users.class).add(Restrictions.eq("username", username))
+		 * .add(Restrictions.eq("password", password)) == null) { return null; } else {
+		 */
+			u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username))
 					.add(Restrictions.eq("password", password)).uniqueResult();
-			long id = u.getId();
-			request.getSession().setAttribute("id", id);
-			return true;
-		}
+			if (u == null)
+				return null;
+			else {
+				long id = u.getId();
+				request.getSession().setAttribute("id", id);
+				return u;
+			}
+	//	}
 	}
 	
 	@Transactional
 	public Users getOneUser(String username) {
 		Session s = sf.getCurrentSession();
-		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username)).uniqueResult();
 		
-		return a;
+		Users a = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username", username)).uniqueResult();
+		if (a == null)
+			return null;
+		else
+			return a;
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
