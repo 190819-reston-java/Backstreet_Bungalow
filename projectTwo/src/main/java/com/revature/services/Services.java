@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -13,6 +14,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Users;
+import com.revature.repositories.PhotosDAO;
+import com.revature.repositories.PostsDAO;
 import com.revature.repositories.UsersDAO;
 
 @Service
@@ -20,6 +23,8 @@ public class Services {
 
 	@Autowired
 	private UsersDAO usersDAO;
+	private PostsDAO postsDAO;
+	private PhotosDAO photosDAO;
 	
 	@Autowired
 	//private 
@@ -69,4 +74,8 @@ public class Services {
 		
 	}
 	
+	public boolean addNewphoto(File file, HttpServletRequest request) {
+		//photosDAO.addNewphoto(file, request)
+		return false;
+	}
 }

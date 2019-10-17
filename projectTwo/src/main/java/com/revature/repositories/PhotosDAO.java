@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -31,13 +33,13 @@ public class PhotosDAO {
 	 * A photo can logout
 	 */
 	
-	@Transactional
-	public Photos getOnePhoto(long id) {
-		Session s = sf.getCurrentSession();
-		Photos a = (Photos) s.get(Photos.class, id);
-		
-		return a;
-	}
+//	@Transactional
+//	public Photos getOnePhoto(long id) {
+//		Session s = sf.getCurrentSession();
+//		Photos a = (Photos) s.get(Photos.class, id);
+//		
+//		return a;
+//	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Photos> getAllPhotosFromOneUser(String username) {
@@ -52,15 +54,16 @@ public class PhotosDAO {
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean addNewphoto(File file, Users user) {
+	public boolean addNewphoto(File file, HttpServletRequest request) {
 		
 		
 		Session s = sf.getCurrentSession();
 		
 		Photos photo = new Photos();
-		photo.setUsersId(user.getId());
+		if (request.getSession().getAttribute("id") == null)
+			return false;
+		photo.setId((long) request.getSession().getAttribute("id"));
 		photo.setImg(ImageToByte(file));
-		
 		try {
 			s.save(photo);
 		} catch (Exception e) {

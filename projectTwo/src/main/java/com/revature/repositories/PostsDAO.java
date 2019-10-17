@@ -29,14 +29,14 @@ public class PostsDAO {
 	 * A post can logout
 	 */
 	
-	@Transactional
-	public Posts getOnePost(String username) {
-		Session s = sf.getCurrentSession();
-		Posts a = (Posts) s.createCriteria(Posts.class)
-				.add(Restrictions.eq("username", username)).uniqueResult();
-		
-		return a;
-	}
+//	@Transactional
+//	public Posts getOnePost(String username) {
+//		Session s = sf.getCurrentSession();
+//		Posts a = (Posts) s.createCriteria(Posts.class)
+//				.add(Restrictions.eq("username", username)).uniqueResult();
+//		
+//		return a;
+//	}
 	
 	public List<Posts> getAllPostsFromOneUser(String username) {
 		Session s = sf.getCurrentSession();
@@ -48,20 +48,20 @@ public class PostsDAO {
 		return Posts;
 	}
 	
-	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean updatePost(Posts post) {
-		Session s = sf.getCurrentSession();
-		Posts u = (Posts) s.get(Posts.class, post.getId());
-		
-		// insert logic to check if posts don't match up here.
-		
-		try {
-			s.persist(u);
-			return true;
-		} catch (Exception e) {
-			return false;
-		}
-	}
+//	@Transactional(propagation = Propagation.REQUIRED)
+//	public boolean updatePost(Posts post) {
+//		Session s = sf.getCurrentSession();
+//		Posts u = (Posts) s.get(Posts.class, post.getId());
+//		
+//		// insert logic to check if posts don't match up here.
+//		
+//		try {
+//			s.persist(u);
+//			return true;
+//		} catch (Exception e) {
+//			return false;
+//		}
+//	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewPost(Posts post) {
@@ -76,21 +76,21 @@ public class PostsDAO {
 		return true;
 	}
 	
-	@Transactional
-	public boolean deletePost(Posts post) {
-		
-		Session s = sf.getCurrentSession();
-		
-		Posts temp = new Posts();
-		temp.setId(post.getId());
-		
-		try {
-			s.delete(temp);
-		} catch (Exception e) {
-			return false;
-		}
-		
-		return true;
-	}
+//	@Transactional
+//	public boolean deletePost(Posts post) {
+//		
+//		Session s = sf.getCurrentSession();
+//		
+//		Posts temp = new Posts();
+//		temp.setId(post.getId());
+//		
+//		try {
+//			s.delete(temp);
+//		} catch (Exception e) {
+//			return false;
+//		}
+//		
+//		return true;
+//	}
 
 }
