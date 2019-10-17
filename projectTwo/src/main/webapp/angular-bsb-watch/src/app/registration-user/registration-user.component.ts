@@ -21,4 +21,7 @@ export class RegistrationUserComponent implements OnInit {
    
   }
 
+  save(user) {
+
+  }
 }

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogPostComponent implements OnInit {
 
+  post: any;
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  save(post) {
+
+  }
 }
