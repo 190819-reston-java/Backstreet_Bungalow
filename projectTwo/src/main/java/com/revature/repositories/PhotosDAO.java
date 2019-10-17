@@ -1,5 +1,13 @@
 package com.revature.repositories;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Activity;
 import com.revature.beans.Photos;
+import com.revature.model.imageTest;
+import com.revature.utils.ConnectionUtil;
 
 @Repository
 public class PhotosDAO {
@@ -64,6 +74,25 @@ public class PhotosDAO {
 		return true;
 	}
 	
-	
+	public static byte[] ImageToByte(File file) {
+		try {
+			FileInputStream fis = new FileInputStream(file);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			byte[] buf = new byte[1024];
+			
+			try {
+				for (int i; (i = fis.read(buf)) != -1;) {
+					bos.write(buf, 0, i);
+					//System.out.println("read " + i + " bytes, ");
+				}
+			}catch (IOException e) {
+			}
+			byte[] bytes = bos.toByteArray();
+			return bytes;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
