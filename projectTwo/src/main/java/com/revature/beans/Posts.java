@@ -90,7 +90,6 @@ public class Posts {
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (numOfComments ^ (numOfComments >>> 32));
 		result = prime * result + (int) (postId ^ (postId >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());

@@ -51,28 +51,20 @@ public class Services {
 		return u;
 	}
 
-	public boolean updateUser(HttpServletRequest request) {
+	public boolean updateUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Users u = null;
-		u.setId(Long.valueOf(request.getParameter("id")));
-		u.setFirstName(request.getParameter("firstname"));
-		u.setLastName(request.getParameter("lastname"));
-		u.setUsername(request.getParameter("username"));
-		u.setEmail(request.getParameter("email"));
-		u.setPassword(request.getParameter("password"));
-		u.setShowInfo(Boolean.valueOf(request.getParameter("showinfo")));
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
 		return usersDAO.updateUser(u);
 		
 	}
 	
-	public boolean addNewUser(HttpServletRequest request) {
+	public boolean addNewUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Users u = null;
-		u.setId(Long.valueOf(request.getParameter("id")));
-		u.setFirstName(request.getParameter("firstname"));
-		u.setLastName(request.getParameter("lastname"));
-		u.setUsername(request.getParameter("username"));
-		u.setEmail(request.getParameter("email"));
-		u.setPassword(request.getParameter("password"));
-		u.setShowInfo(Boolean.valueOf(request.getParameter("showinfo")));
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		System.out.println(u.toString());
+		u.setId(0);
 		return usersDAO.addNewUser(u);
 		
 	}
