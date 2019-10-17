@@ -19,8 +19,6 @@ public class Posts {
 	@Column(name="id")
 	private long id;
 	
-	@Column( name="post_id" )
-	private long postId;
 	
 	@Column(name="users_id")
 	private String userId;
@@ -35,10 +33,9 @@ public class Posts {
 		super();
 	}
 
-	public Posts(long id, long postId, String userId, String title, String content) {
+	public Posts(long id, String userId, String title, String content) {
 		super();
 		this.id = id;
-		this.postId = postId;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
@@ -50,14 +47,6 @@ public class Posts {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public long getPostId() {
-		return postId;
-	}
-
-	public void setPostId(long postId) {
-		this.postId = postId;
 	}
 
 	public String getUserId() {
@@ -90,7 +79,6 @@ public class Posts {
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (postId ^ (postId >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
@@ -112,8 +100,6 @@ public class Posts {
 			return false;
 		if (id != other.id)
 			return false;
-		if (postId != other.postId)
-			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -129,7 +115,7 @@ public class Posts {
 
 	@Override
 	public String toString() {
-		return "Posts [id=" + id + ", postId=" + postId + ", userId=" + userId + ", title=" + title + ", content="
+		return "Posts [id=" + id + ", userId=" + userId + ", title=" + title + ", content="
 				+ content + "]";
 	}
 
