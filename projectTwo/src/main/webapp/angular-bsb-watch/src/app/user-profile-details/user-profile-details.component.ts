@@ -3,6 +3,7 @@ import { User } from '../user';
 import { USER } from '../mock-user';
 import { UserService } from '../user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CurrentUserService } from '../current-user.service';
 
 
 @Component({
@@ -12,26 +13,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserProfileDetailsComponent implements OnInit {
 
-  user= {};
-
-  constructor(private http: HttpClient) { }
-
-  save(user: User): void {
-    console.log(user.first_name);
-    console.log(user.last_name);
-    console.log(user.username);
-    console.log(user.email);
-  }
-
   
-  result: any;
-  UrlEndpoint: string = "localhost:4200/register/new";
+  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
-  submit(u: User) {
-    this.http.post(this.UrlEndpoint, JSON.stringify(u)).subscribe(
-      res => this.result = res)    
+  private updateUrl: string = "localhost:8080/user/update";
+
+  @Input() user: User = this.currentUser.user;
+  
+  onSubmit(user: User)  {
+    let observable = this.http.put(this.updateUrl, JSON.stringify(user))
+    observable.subscribe((result: any) => {this.currentUser.user = result
+    })
   }
-
 
   ngOnInit() {
   }

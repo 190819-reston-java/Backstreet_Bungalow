@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { CurrentUserService } from '../current-user.service';
+import { User } from '../user';
+
 
 
 
@@ -10,26 +13,19 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  private loginURL = '/login';
-
-  // onSubmit() {
-  //   console.log("this works");
-  // } 
-
-  loginImage:any = "assets\\images\\bb4.jpg";
-  title = 'app';
-
-
-  constructor(private http: HttpClient) { }
-
-  sidebar;
-
-  loggedIn() {
-    this.sidebar.loggedIn = true;
+  ngOnInit(): void {
+    
   }
 
-  ngOnInit() {
+  private loginURL = 'localhost:8080/login';
+  private user: User;
+
+  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+
+  onSubmit(user: User)  {
+    let observable = this.http.post(this.loginURL, JSON.stringify(user.username))
+    observable.subscribe((result: any) => {this.currentUser.user = result;
+    })
   }
 
 }
