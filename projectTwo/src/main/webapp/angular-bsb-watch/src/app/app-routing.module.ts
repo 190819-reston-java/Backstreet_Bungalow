@@ -17,7 +17,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
-  { path: 'latest-articles', component: LatestArticlesComponent },
+  { path: 'articles', component: LatestArticlesComponent },
   { path: 'members', component: MemberSectionComponent },
   { path: 'music', component: MusicInfoComponent },
   { path: 'photos', component: LatestPhotosComponent },
