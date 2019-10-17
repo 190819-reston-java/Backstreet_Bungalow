@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
 
 
 
@@ -66,7 +67,8 @@ import { RegistrationUserComponent } from './registration-user/registration-user
     SingleUserPhotosComponent,
     MemberSectionComponent,
     PopularSectionComponent,
-    RegistrationUserComponent
+    RegistrationUserComponent,
+    BlogPostComponent
   ],
   imports: [
     BrowserModule,

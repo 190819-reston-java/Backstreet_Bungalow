@@ -14,6 +14,7 @@ import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/profile', pathMatch: 'full' },
   { path: 'profile/:id', component: UserProfileDetailsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationUserComponent}
+  { path: 'register', component: RegistrationUserComponent},
+  { path: 'newblogpost', component: BlogPostComponent}
 ]
 
 
