@@ -98,7 +98,7 @@ CREATE TABLE Photos (
 	photo_id INT PRIMARY KEY REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
 	content_desc VARCHAR NOT NULL,
-	content_hash VARCHAR NOT null,
+	content_hash BYTEA NOT null,
 	num_of_comments INTEGER NOT null
 	-- num_of_comments is moved here for the same reason
 	-- that's it's moved into the Posts table.

@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,36 +9,54 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import javax.servlet.http.HttpServlet;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.revature.beans.Users;
 import com.revature.services.Services;
 
 @Controller
 public class FrontController {
 
+	
 	@Autowired
 	private Services services;
 	
 	@PostMapping("/login")
 	@ResponseBody
-	public ResponseEntity<Boolean> login(HttpServletRequest request, HttpServletResponse response) {
-		Boolean b = services.login(request);
-		//redirect
-		return ResponseEntity.status(HttpStatus.OK).body(b);
+	public ResponseEntity<Users> login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Users u = services.login(request);
+		if (u == null) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(u);
+		}
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(u);
+	}
+	
+	//****Needs validation****//
+	@PostMapping("/logout")
+	@ResponseBody
+	public ResponseEntity<Boolean> logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		request.getSession().invalidate();
+		response.sendRedirect(request.getContextPath() + "SomethingSomething.html");
+		return ResponseEntity.status(HttpStatus.OK).body(true);
 	}
 	
 	@PostMapping("/getOneUser")
 	@ResponseBody
-	public ResponseEntity<Users> getOneUser(HttpServletRequest request, HttpServletResponse response) {
-		String a = request.getParameter("id");
-		Long id = Long.valueOf(a);
-		return ResponseEntity.status(HttpStatus.OK).body(services.getOneUser(id));
+	public ResponseEntity<Users> getOneUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+		Users u = services.getOneUser(request);
+		if (u == null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(u);
+		}
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
 	@GetMapping("/getAllUsers")
@@ -46,17 +65,23 @@ public class FrontController {
 		return ResponseEntity.status(HttpStatus.OK).body(services.getAllUsers());
 	}
 	
-	@GetMapping("/updateUser")
+	@PostMapping("/updateUser")
 	@ResponseBody
-	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.updateUser(request);
-		return ResponseEntity.status(HttpStatus.OK).body(b);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
 	
-	@GetMapping("/addNewUser")
+	@PostMapping("/addNewUser")
 	@ResponseBody
-	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.addNewUser(request);
-		return ResponseEntity.status(HttpStatus.OK).body(b);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
 }

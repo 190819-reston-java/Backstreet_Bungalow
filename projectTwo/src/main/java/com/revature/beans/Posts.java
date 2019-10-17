@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -16,11 +14,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Posts {
 	
-	@OneToOne
-	@Column( name="post_id" )
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private long id;
 	
-	@OneToOne
 	@Column(name="users_id")
 	private String userId;
 	
@@ -29,21 +27,17 @@ public class Posts {
 	
 	@Column(name="content")
 	private String content;
-	
-	@Column(name="num_of_comments")
-	private long numOfComments;
 
 	public Posts() {
 		super();
 	}
 
-	public Posts(long id, String userId, String title, String content, long numOfComments) {
+	public Posts(long id, String userId, String title, String content) {
 		super();
 		this.id = id;
 		this.userId = userId;
 		this.title = title;
 		this.content = content;
-		this.numOfComments = numOfComments;
 	}
 
 	public long getId() {
@@ -78,21 +72,12 @@ public class Posts {
 		this.content = content;
 	}
 
-	public long getNumOfComments() {
-		return numOfComments;
-	}
-
-	public void setNumOfComments(long numOfComments) {
-		this.numOfComments = numOfComments;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (numOfComments ^ (numOfComments >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
@@ -114,8 +99,6 @@ public class Posts {
 			return false;
 		if (id != other.id)
 			return false;
-		if (numOfComments != other.numOfComments)
-			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -131,8 +114,10 @@ public class Posts {
 
 	@Override
 	public String toString() {
-		return "Posts [id=" + id + ", userId=" + userId + ", title=" + title + ", content=" + content
-				+ ", numOfComments=" + numOfComments + "]";
+		return "Posts [id=" + id + ", userId=" + userId + ", title=" + title + ", content="
+				+ content + "]";
 	}
+
+	
 	
 }
