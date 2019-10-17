@@ -14,6 +14,7 @@ import { LocationComponent } from './location/location.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
@@ -24,7 +25,9 @@ const routes: Routes = [
   { path: 'blog-posts', component: LatestBlogPostsComponent },
   { path: 'popular', component: PopularSectionComponent },
   { path: 'location', component: LocationComponent },
-  { path: '', redirectTo: '/profile', pathMatch: 'full' },
+  // { path: '', redirectTo: '/profile', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'main', component: AppComponent },
   { path: 'profile/:id', component: UserProfileDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationUserComponent}
@@ -35,7 +38,11 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      scrollOffset: [0,64],
+    }),
   ],
   exports: [RouterModule]
 })
