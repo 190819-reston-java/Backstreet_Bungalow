@@ -14,8 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.beans.Photos;
-import com.revature.beans.Users;
+import com.revature.beans.Activity;
 import com.revature.beans.Photos;
 
 @Repository
@@ -42,11 +41,9 @@ public class PhotosDAO {
 	public List<Photos> getAllPhotosFromOneUser(String username) {
 		Session s = sf.getCurrentSession();
 		
-		
-		
 		@SuppressWarnings("unchecked")
 		List<Photos> Photos = s.createCriteria(Photos.class)
-			.add(Restrictions.eq("user_id", username)).list();
+			.add(Restrictions.eq("username", username)).list();
 		
 		return Photos;
 	}
@@ -54,6 +51,8 @@ public class PhotosDAO {
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewphoto(Photos photo) {
+		
+		Activity n3w = new Activity();
 		
 		Session s = sf.getCurrentSession();
 		try {
