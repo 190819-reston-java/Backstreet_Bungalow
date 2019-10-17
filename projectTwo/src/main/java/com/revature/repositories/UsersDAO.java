@@ -78,8 +78,6 @@ public class UsersDAO {
 			u.setEmail(user.getEmail());
 		if (user.getPassword() != null)
 			u.setPassword(user.getPassword());
-		if (user.isShowInfo())
-			u.setShowInfo(user.isShowInfo());
 		try {
 			s.persist(u);
 			return true;

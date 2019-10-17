@@ -26,9 +26,6 @@ public class Services {
 	private PostsDAO postsDAO;
 	private PhotosDAO photosDAO;
 	
-	@Autowired
-	//private 
-	
 	public Services() {
 		super();
 	}
