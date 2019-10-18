@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from "../user";
 import { HttpClient } from '@angular/common/http';
+import { CurrentUserService } from '../current-user.service';
+ 
 
 
 
@@ -11,18 +13,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegistrationUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
   ngOnInit() {
   }
+
+  user: User = new User();
    
-  http: HttpClient;
-  result: any;
-  UrlEndpoint: string = "localhost:4200/register/new";
+  user: User = new User();
 
-  submit(u: User) {
-    this.http.post(this.UrlEndpoint, JSON.stringify(u)).subscribe(
-      res => this.result = res)    
+  registerUrl: string = "localhost:4200/register/new";
+
+
+  onSubmit()  {
+    let observable = this.http.post(this.registerUrl, JSON.stringify(this.user))
+    observable.subscribe((result: any) => {this.currentUser.user = result;
+    })
   }
-
 }

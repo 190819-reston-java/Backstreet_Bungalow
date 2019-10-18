@@ -32,12 +32,8 @@
                 <input [(ngModel)]="user.password" placeholder="Create Password"/>
             </label>
         </div><div><span>Confirm Password: </span></div>
-        <div>
-            <label>
-                <input [(ngModel)]="user.confirmPassword" placeholder="Confirm Password"/>
-            </label>
-        </div>
-        <button (click)="save(this.user)">Save</button>
+        
+        <button (click)="onSubmit()">Save</button>
 
     </div>
 </body>
