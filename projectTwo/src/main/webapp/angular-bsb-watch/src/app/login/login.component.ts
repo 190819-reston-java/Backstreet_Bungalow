@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
     
   }
 
-  private loginURL = 'localhost:8080/login';
+  private loginURL = 'localhost:8080/Project2/login';
   
-  private user: User = new User();
+  user: User = new User();
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
   onSubmit()  {
