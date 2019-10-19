@@ -34,7 +34,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
-
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -77,7 +79,9 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    MatSliderModule,
+    MatTabsModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

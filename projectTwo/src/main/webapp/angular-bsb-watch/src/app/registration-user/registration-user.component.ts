@@ -19,8 +19,6 @@ export class RegistrationUserComponent implements OnInit {
   }
 
   user: User = new User();
-   
-  user: User = new User();
 
   registerUrl: string = "localhost:4200/register/new";
 
