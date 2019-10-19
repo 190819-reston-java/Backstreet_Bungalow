@@ -2,10 +2,13 @@ package com.revature.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +29,11 @@ public class Services {
 
 	@Autowired
 	private UsersDAO usersDAO;
+	
+	@Autowired
 	private PostsDAO postsDAO;
+	
+	@Autowired
 	private PhotosDAO photosDAO;
 	
 	public Services() {
@@ -81,6 +88,10 @@ public class Services {
 		return postsDAO.getAllPostsFromOneUser(username);
 	}
 	
+	public List<Posts> getRecentPosts() {
+		return postsDAO.getRecentPosts();
+	}
+	
 	public boolean addNewPost(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Posts p = null;
 		ObjectMapper om = new ObjectMapper();
@@ -89,10 +100,12 @@ public class Services {
 		return postsDAO.addNewPost(p);
 	}
 	
-	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
-		TempFile f = null;
+	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
+		Photos f = null;
 		ObjectMapper om = new ObjectMapper();
-		f = om.readValue(request.getReader(), TempFile.class);
-		return photosDAO.addNewphoto(f.getFile(), request);
+		f = om.readValue(request.getReader(), Photos.class);
+		System.out.println(f.toString());
+		return false;
+	//	return photosDAO.addNewphoto(f.getFile(), request);
 	}
 }

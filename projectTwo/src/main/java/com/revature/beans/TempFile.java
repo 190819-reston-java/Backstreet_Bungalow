@@ -2,12 +2,9 @@ package com.revature.beans;
 
 import java.io.File;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class TempFile {
 
-	File file;
+	private File file;
 
 	public TempFile() {
 		super();
