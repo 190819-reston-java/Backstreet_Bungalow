@@ -34,6 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { PictureUploadComponent } from './picture-upload/picture-upload.component';
+
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
@@ -68,7 +70,8 @@ import {MatCardModule} from '@angular/material/card';
     MemberSectionComponent,
     PopularSectionComponent,
     RegistrationUserComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    PictureUploadComponent
   ],
   imports: [
     BrowserModule,
