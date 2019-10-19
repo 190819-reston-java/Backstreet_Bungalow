@@ -22,6 +22,9 @@ public class Posts {
 	@Column(name="users_id")
 	private String userId;
 	
+	@Column(name="username")
+	private String username;
+	
 	@Column(name="title")
 	private String title;
 	
@@ -32,10 +35,11 @@ public class Posts {
 		super();
 	}
 
-	public Posts(long id, String userId, String title, String content) {
+	public Posts(long id, String userId, String username, String title, String content) {
 		super();
 		this.id = id;
 		this.userId = userId;
+		this.username = username;
 		this.title = title;
 		this.content = content;
 	}
@@ -54,6 +58,14 @@ public class Posts {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getTitle() {
@@ -80,6 +92,7 @@ public class Posts {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -109,15 +122,18 @@ public class Posts {
 				return false;
 		} else if (!userId.equals(other.userId))
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Posts [id=" + id + ", userId=" + userId + ", title=" + title + ", content="
+		return "Posts [id=" + id + ", userId=" + userId + ", username=" + username + ", title=" + title + ", content="
 				+ content + "]";
 	}
-
-	
 	
 }
