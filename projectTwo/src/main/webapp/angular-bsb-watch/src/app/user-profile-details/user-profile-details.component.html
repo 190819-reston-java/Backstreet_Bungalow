@@ -1,35 +1,35 @@
 
 <div class="container">
     <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}} Details</h2>
-    <div><span>ID: </span>{{user.id}}</div>
+    <div><h3>Your Info:</h3></div>
     <div><span>First Name: </span>{{user.first_name}}</div>
     <div>
         <label>
-            <input [(ngModel)]="user.first_name" placeholder="firstname"/>
+            <input [(ngModel)]="this.user.first_name" placeholder="firstname" name="first_name"/>
         </label>
     </div>
     <div><span>Last Name: </span>{{user.last_name}}</div>
     <div>
         <label>
-            <input [(ngModel)]="user.last_name" placeholder="lastname"/>
+            <input [(ngModel)]="this.user.last_name" placeholder="lastname" name="last_name"/>
         </label>
     </div>
     <div><span>Username: </span>{{user.username}}</div>
     <div>
         <label>
-            <input [(ngModel)]="user.username" placeholder="username"/>
+            <input [(ngModel)]="this.user.username" placeholder="username" name="username"/>
         </label>
     </div>
     <div><span>Email: </span>{{user.email}}</div>
     <div>
         <label>
-            <input [(ngModel)]="user.email" placeholder="email"/>
+            <input [(ngModel)]="this.user.email" placeholder="email" name="email"/>
         </label>
     </div>
     <div><span>Password: </span></div>
     <div>
         <label>
-            <input type="password" [(ngModel)]="user.password" placeholder="Enter Password"/>
+            <input type="password" [(ngModel)]="this.user.password" placeholder="Enter Password" name="password"/>
         </label>
     </div>
     <!-- <div><span>Confirm Password: </span></div>
