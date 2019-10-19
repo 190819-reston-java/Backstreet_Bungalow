@@ -10,8 +10,8 @@
     padding: 10px;
 }
 
-.router-button {
-    margin: 15px;
+.component-button {
+    margin: 10px;
     padding: 10 px;
     background-color:  hsla(0, 0%, 100%, 0.342)1;
 }

@@ -34,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { PictureUploadComponent } from './picture-upload/picture-upload.component';
 
 
 
@@ -66,7 +67,8 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
     MemberSectionComponent,
     PopularSectionComponent,
     RegistrationUserComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    PictureUploadComponent
   ],
   imports: [
     BrowserModule,
