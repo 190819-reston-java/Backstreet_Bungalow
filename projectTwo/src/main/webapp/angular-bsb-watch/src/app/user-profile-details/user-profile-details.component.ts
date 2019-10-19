@@ -17,7 +17,7 @@ export class UserProfileDetailsComponent implements OnInit {
 
   private updateUrl: string = "localhost:8080/user/update";
 
-  @Input() user: User = this.currentUser.user;
+  user = new User;
 
   onSubmit(user: User)  {
     let observable = this.http.put(this.updateUrl, JSON.stringify(user))
