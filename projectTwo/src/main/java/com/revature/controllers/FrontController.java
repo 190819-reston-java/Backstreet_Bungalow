@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.revature.beans.Posts;
 import com.revature.beans.Users;
 import com.revature.services.Services;
 
@@ -79,6 +80,26 @@ public class FrontController {
 	@ResponseBody
 	public ResponseEntity<Boolean> addNewUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.addNewUser(request);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
+	}
+	
+	@PostMapping("/postsFromOneUser")
+	@ResponseBody
+	public ResponseEntity<List<Posts>> getAllPostsFromOneUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+		List<Posts> list = services.getAllPostsFromOneUser(request);
+		if (list == null)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(list);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(list);
+	}
+	
+	@PostMapping("/newPost")
+	@ResponseBody
+	public ResponseEntity<Boolean> addNewPost(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+		Boolean b = services.addNewPost(request);
 		if (b == false)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
 		else

@@ -67,12 +67,14 @@ public class PostsDAO {
 	public boolean addNewPost(Posts post) {
 		
 		Session s = sf.getCurrentSession();
+		if (post.getUserId() == null || post.getUsername() == null || post.getTitle() == null
+				|| post.getContent() == null)
+			return false;
 		try {
 			s.save(post);
 		} catch (Exception e) {
 			return false;
 		}
-		
 		return true;
 	}
 	
