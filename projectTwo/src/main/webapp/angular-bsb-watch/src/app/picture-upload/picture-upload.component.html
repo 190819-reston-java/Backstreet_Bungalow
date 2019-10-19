@@ -1,0 +1,8 @@
+<h5>Upload Pictures!</h5>
+<input 
+    style="display: none" 
+    type="file" 
+    (change)="onFileSelected($event)"
+    #fileInput>
+<button class="col-md-4 button-margin" type="button" (click)="fileInput.click()">Pick File</button>
+<button class="col-md-4 button-margin" type="button" (click)="onUpload()">Upload</button>
