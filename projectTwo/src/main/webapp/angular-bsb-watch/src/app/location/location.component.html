@@ -1,23 +1,31 @@
 <body background="../../assets/images/bb4.jpg">
+
+
     <div class="container">
-        <section class="card">            
-            <div class="card--content" id="map-container">
-                <!-- this creates a google map on the page with the given lat/lng from -->
-                <!-- the component as the initial center of the map: -->
-                <agm-map [latitude]="38.953546" [longitude]="-77.350469" [zoom]=15>
-                    <agm-marker [latitude]="38.953546" [longitude]="-77.350469"></agm-marker>
-                </agm-map>
-            </div>
-            <div class="card--content" id="map-info-container">
-                <h1>Backstreet Bungalow</h1>
-                <h3>
-                    Meeting times: Every Tuesday @ 7pm
-                </h3>
-                <h3>
-                    11730 Plaza America Dr 2nd Floor, Reston, VA 20190
-                </h3>
-            </div>
-            <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-        </section>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-content class="mat-card-header-info">
+                    <h1>Backstreet Bungalow</h1>
+                    <h5>
+                        Meeting times: Every Tuesday @ 7pm hosted by Adam King
+                    </h5>
+                    <h5>
+                        11730 Plaza America Dr 2nd Floor, Reston, VA 20190
+                    </h5>
+                </mat-card-content>
+                <mat-card-content class="mat-card-header-adam">
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <div class="example-header-info">
+                        <mat-card-title>Adam King</mat-card-title>
+                        <mat-card-subtitle>BSB Bungalow Leader</mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+            </mat-card-header>
+            <!-- this creates a google map on the page with the given lat/lng from -->
+            <!-- the component as the initial center of the map: -->
+            <agm-map [latitude]="38.953546" [longitude]="-77.350469" [zoom]=15>
+                <agm-marker [latitude]="38.953546" [longitude]="-77.350469"></agm-marker>
+            </agm-map>
+        </mat-card>
     </div>
 </body>

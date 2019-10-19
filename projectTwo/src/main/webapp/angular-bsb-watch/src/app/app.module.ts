@@ -36,6 +36,7 @@ import { RegistrationUserComponent } from './registration-user/registration-user
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatSliderModule,
     MatTabsModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
