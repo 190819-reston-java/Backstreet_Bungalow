@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Photos;
 import com.revature.beans.Posts;
+import com.revature.beans.TempFile;
 import com.revature.beans.Users;
 import com.revature.repositories.PhotosDAO;
 import com.revature.repositories.PostsDAO;
@@ -87,8 +89,10 @@ public class Services {
 		return postsDAO.addNewPost(p);
 	}
 	
-	public boolean addNewphoto(File file, HttpServletRequest request) {
-		//photosDAO.addNewphoto(file, request)
-		return false;
+	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		TempFile f = null;
+		ObjectMapper om = new ObjectMapper();
+		f = om.readValue(request.getReader(), TempFile.class);
+		return photosDAO.addNewphoto(f.getFile(), request);
 	}
 }
