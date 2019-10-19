@@ -1,8 +1,16 @@
 agm-map {
     height: 500px;
-    width: 500px;
+    width: 100%;
   }
 
+  .mat-card-header-adam {
+    float: right;
+  }
+
+  .mat-card-header-info {
+    float: left;
+    width: 75%;
+  }
 html,
 body {
     width: 100%;
@@ -18,13 +26,13 @@ body {
   }
 
   .container {
-    margin-left: 160px
+    margin-left: 500px
   }
 
   .card {
     display: flex;
     overflow-x: auto;
-    background-color: #fff;
+    background-color: hsla(0, 33%, 46%, 0.342);
     min-width: 100%;
     min-height: 200px;
   }
@@ -37,4 +45,19 @@ body {
 
   .card::-webkit-scrollbar {
     display: none;
+  }
+
+  .example-card {
+    max-width: 1000px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    float: left;
+  }
+
+  .example-header-info {
+    margin-left: 10px;
+    float: right;
   }

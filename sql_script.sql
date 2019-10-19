@@ -11,7 +11,7 @@ CREATE TABLE Users (
 	show_info BOOLEAN
 
 );
-
+--INSERT INTO Users (first_name, last_name, username, "role", email, pswd, show_info) VALUES ('Zach', 'Marshello', 'marsh3825', 'admin', 'marsh3825@gmail.com', 'password', TRUE);
 CREATE TABLE Activity (
 
 	id SERIAL PRIMARY KEY,
@@ -32,6 +32,7 @@ CREATE TABLE comment_mapper (
 DROP TABLE posts;
 CREATE TABLE Posts (
 
+	id serial PRIMARY KEY,
 	post_id INT REFERENCES Activity(id),
 	users_id INT REFERENCES users(id) NOT NULL,
 	title VARCHAR(50) NOT NULL,
@@ -103,7 +104,8 @@ CREATE TABLE Messages_map (
 DROP TABLE photos;
 CREATE TABLE Photos (
 
-	photo_id INT PRIMARY KEY REFERENCES Activity(id), 
+	id serial PRIMARY KEY,
+	photo_id INT REFERENCES Activity(id), 
 	users_id INT REFERENCES users(id) NOT NULL,
 	status boolean NOT NULL,
 	img bytea NOT NULL

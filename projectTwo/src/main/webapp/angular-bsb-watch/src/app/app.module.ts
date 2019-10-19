@@ -34,8 +34,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistrationUserComponent } from './registration-user/registration-user.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+<<<<<<< HEAD
 import { PictureUploadComponent } from './picture-upload/picture-upload.component';
 
+=======
+import { MatSliderModule } from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+>>>>>>> 793748b998c7050e3bfc96a80e859e13ede32fdf
 
 
 @NgModule({
@@ -79,7 +85,9 @@ import { PictureUploadComponent } from './picture-upload/picture-upload.componen
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    MatSliderModule,
+    MatTabsModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
