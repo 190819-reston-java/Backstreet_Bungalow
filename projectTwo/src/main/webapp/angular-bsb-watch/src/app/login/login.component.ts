@@ -14,17 +14,19 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   ngOnInit(): void {
-    
+
   }
 
-  private loginURL = 'localhost:8080/Project2/login';
-  
-  user: User = new User();
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  private loginURL = 'http://localhost:8080/Project2/login';
 
-  onSubmit()  {
-    let observable = this.http.post(this.loginURL, JSON.stringify(this.user.username))
-    observable.subscribe((result: any) => {this.currentUser.user = result;
+
+  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  user: User = new User();
+  onSubmit() {
+    console.log(this.user);
+    let observable = this.http.post(this.loginURL, JSON.stringify(this.user))
+    observable.subscribe((result: any) => {
+      this.currentUser.user = result;
     })
   }
 

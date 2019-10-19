@@ -13,9 +13,9 @@
     <div class="container">
         <form class="login" (submit)="onSubmit()">
             <h5>Enter Username:</h5>
-            <input [(ngModel)]="user.username" placeholder="Username"/>
+            <input [(ngModel)]="this.user.username" placeholder="Username"/>
             <h5>Enter Password:</h5>
-            <input [(ngModel)]="user.password" placeholder="Password"/>
+            <input [(ngModel)]="this.user.password" placeholder="Password"/>
             <input type="submit">
         </form>
     </div>
