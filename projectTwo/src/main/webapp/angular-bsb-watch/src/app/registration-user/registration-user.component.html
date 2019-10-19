@@ -5,33 +5,33 @@
         <div><span>First Name: </span>{{user.first_name}}</div>
         <div>
             <label>
-                <input [(ngModel)]="user.first_name" placeholder="firstname"/>
+                <input [(ngModel)]="this.user.first_name" placeholder="firstname" name="first_name"/>
             </label>
         </div>
         <div><span>Last Name: </span>{{user.last_name}}</div>
         <div >
             <label>
-                <input [(ngModel)]="user.last_name" placeholder="lastname"/>
+                <input [(ngModel)]="this.user.last_name" placeholder="lastname" name="last_name"/>
             </label>
         </div>
         <div><span>Email: </span>{{user.email}}</div>
         <div>
             <label>
-                <input [(ngModel)]="user.email" placeholder="email"/>
+                <input [(ngModel)]="this.user.email" placeholder="email" name="email"/>
             </label>
         </div>
         <div><span>Username: </span>{{user.username}}</div>
         <div>
             <label>
-                <input [(ngModel)]="user.username" placeholder="username"/>
+                <input [(ngModel)]="this.user.username" placeholder="username" name="username"/>
             </label>
         </div>
         <div><span>Enter Password: </span></div>
         <div>
             <label>
-                <input [(ngModel)]="user.password" placeholder="Create Password"/>
+                <input [(ngModel)]="this.user.password" placeholder="Create Password" name="password"/>" />
             </label>
-        </div><div><span>Confirm Password: </span></div>
+        </div>
         
         <button (click)="onSubmit()">Save</button>
 

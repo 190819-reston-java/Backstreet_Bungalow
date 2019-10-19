@@ -1,6 +1,7 @@
 .scrolling-wrapper {
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     /* white-space: nowrap; */
     margin-left: 160px;
+    scroll-behavior: smooth;
 }
