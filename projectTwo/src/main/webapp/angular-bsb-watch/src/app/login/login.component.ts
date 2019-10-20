@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['profile']);
         }
       },
-      (err) => { alert("Incorrect username or password. Please try again.") }
+      (err) => { alert("Incorrect username or password. Please try again."); }
     );
 
 

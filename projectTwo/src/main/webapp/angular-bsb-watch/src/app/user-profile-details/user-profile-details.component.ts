@@ -23,13 +23,15 @@ export class UserProfileDetailsComponent implements OnInit {
 
   onSubmit(user: User) {
 
-    let observable = this.http.put(this.updateUrl, JSON.stringify(user))
+    let observable = this.http.post(this.updateUrl, JSON.stringify(user))
 
     console.log(user);
 
-    observable.subscribe((result: any) => {
-      this.currentUser.user = result
-    })
+    observable.subscribe(
+      (result: any) => {
+      alert("Successfully updated information!");},
+      (err) => { alert("Email already found in system"); }
+    )
   }
 
   ngOnInit() {

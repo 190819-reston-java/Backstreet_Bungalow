@@ -19,14 +19,19 @@ export class LatestBlogPostsComponent implements OnInit {
 
 
   ngOnInit() {
-    
+    this.getPosts();
   }
 
   
   getPosts() {
     let observable = this.http.get(this.getLatestPostsUrl);
-    // observable.subscribe(
-    //   (result: any));
+    observable.subscribe(
+      (result: any) => {
+        this.posts = result;
+        console.log(this.posts);
+      }
+    
+    );
 
   }
 

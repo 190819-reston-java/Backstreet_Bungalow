@@ -17,7 +17,7 @@
     <div><span>Username: </span>{{user.username}}</div>
     <div>
         <label>
-            <input [(ngModel)]="this.user.username" placeholder="username" name="username"/>
+            <input [(ngModel)]="this.user.username" placeholder="username" name="username" [readonly]="true"/>
         </label>
     </div>
     <div><span>Email: </span>{{user.email}}</div>
