@@ -20,7 +20,7 @@ public class Posts {
 	private long id;
 	
 	@Column(name="users_id")
-	private String userId;
+	private long userId;
 	
 	@Column(name="username")
 	private String username;
@@ -35,7 +35,7 @@ public class Posts {
 		super();
 	}
 
-	public Posts(long id, String userId, String username, String title, String content) {
+	public Posts(long id, long userId, String username, String title, String content) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -52,11 +52,11 @@ public class Posts {
 		this.id = id;
 	}
 
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -91,7 +91,7 @@ public class Posts {
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + (int) (userId ^ (userId >>> 32));
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -117,10 +117,7 @@ public class Posts {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
+		if (userId != other.userId)
 			return false;
 		if (username == null) {
 			if (other.username != null)
@@ -135,5 +132,7 @@ public class Posts {
 		return "Posts [id=" + id + ", userId=" + userId + ", username=" + username + ", title=" + title + ", content="
 				+ content + "]";
 	}
+
+	
 	
 }

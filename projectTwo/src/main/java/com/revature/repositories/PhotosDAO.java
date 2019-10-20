@@ -62,7 +62,8 @@ public class PhotosDAO {
 		Photos photo = new Photos();
 		if (request.getSession().getAttribute("id") == null)
 			return false;
-		photo.setId((long) request.getSession().getAttribute("id"));
+		photo.setUsersId((long) request.getSession().getAttribute("id"));
+		photo.setId(0);
 		photo.setImg(ImageToByte(file));
 		try {
 			s.save(photo);

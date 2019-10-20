@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.beans.Photos;
 import com.revature.beans.Posts;
+import com.revature.beans.Users;
 
 @Repository
 public class PostsDAO {
@@ -38,37 +39,48 @@ public class PostsDAO {
 //		return a;
 //	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Posts> getAllPostsFromOneUser(String username) {
 		Session s = sf.getCurrentSession();
 		
 		@SuppressWarnings("unchecked")
-		List<Posts> Posts = s.createCriteria(Posts.class)
-			.add(Restrictions.eq("username", username)).list();
-		
-		return Posts;
+		List<Posts> p = s.createCriteria(Posts.class)
+			.add(Restrictions.eq("username", username)).list();							
+		if (!(p.isEmpty()))
+			return p;
+		else
+			return null;
 	}
 	
-//	@Transactional(propagation = Propagation.REQUIRED)
-//	public boolean updatePost(Posts post) {
-//		Session s = sf.getCurrentSession();
-//		Posts u = (Posts) s.get(Posts.class, post.getId());
-//		
-//		// insert logic to check if posts don't match up here.
-//		
-//		try {
-//			s.persist(u);
-//			return true;
-//		} catch (Exception e) {
-//			return false;
-//		}
-//	}
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Posts> getRecentPosts() {
+		Session s = sf.getCurrentSession();
+		
+		@SuppressWarnings("unchecked")
+		List<Posts> p = s.createCriteria(Posts.class).list();
+		int i = p.size() - 1;
+		int n = 0;
+		List<Posts> k = new ArrayList<Posts>();
+		while (n < 5) {
+			k.add(p.get(i));
+			i--;
+			n++;
+		}
+		return k;
+	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewPost(Posts post) {
 		
 		Session s = sf.getCurrentSession();
-		if (post.getUserId() == null || post.getUsername() == null || post.getTitle() == null
-				|| post.getContent() == null)
+		
+		Users u;
+		
+		u = (Users) s.createCriteria(Users.class).add(Restrictions.eq("username",
+				post.getUsername())).add(Restrictions.eq("id", post.getUserId())).uniqueResult();
+		if (u == null)
+			 return false;
+		if (post.getContent().isEmpty())
 			return false;
 		try {
 			s.save(post);
