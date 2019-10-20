@@ -12,7 +12,6 @@
     </div>
     <div class="container">
         <form #userLoginForm="ngForm" class="login" (ngSubmit)="onSubmit()">
-            {{userLoginForm.value | json}}
             <h5>Enter Username:</h5>
             <input [(ngModel)]="this.user.username" placeholder="Username" name="username"/>
             <h5>Enter Password:</h5>

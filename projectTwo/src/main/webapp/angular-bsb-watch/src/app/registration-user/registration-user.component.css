@@ -1,7 +1,32 @@
-.container{
-    margin-left: 360px;
-    
+div.container{
+    margin-left: 460px;
+    text-align: center;
     padding: 15px;
     color: white;
     background:rgba(77, 75, 75, 0.767);
+}
+
+hr {
+    border: white;
+    size: 5px;
+}
+
+.row {
+    width: 100%;
+}
+
+.col-sm-6 {
+    font-size: 150%;
+}
+
+button {
+    width: 50%;
+    margin: 0 auto;
+    color: seashell;
+    font-size: 100%;
+}
+
+.required-notification {
+    font-size: 80%;
+    color: red;
 }

@@ -1,39 +1,85 @@
 <body background="../../assets/images/bb6.jpg">
     <div class="container">
-        <h1>Enter Details Below!</h1>
-        
-        <div><span>First Name: </span>{{user.first_name}}</div>
-        <div>
-            <label>
-                <input [(ngModel)]="this.user.firstName" placeholder="firstname" name="firstName" required/>
-            </label>
+        <h1>Enter details below to be <br> a part of a growing community!</h1>
+        <br><br>
+        <div class="row">
+            <div class="first-name-container col-sm-6">
+                <div><span>First Name: </span>{{user.first_name}}</div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.user.firstName" placeholder="First Name" name="firstName" required />
+                    </label>
+                </div>
+                <div *ngIf="!(this.user.firstName)" class="required-notification">
+                    First Name required!
+                </div>
+            </div>
+            <div class="last-name-container col-sm-6">
+                <div><span>Last Name: </span>{{user.last_name}}</div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.user.lastName" placeholder="Last Name" name="lastName" required />
+                    </label>
+                </div>
+                <div *ngIf="!(this.user.lastName)" class="required-notification">
+                    Last Name required!
+                </div>
+            </div>
         </div>
-        <div><span>Last Name: </span>{{user.last_name}}</div>
-        <div >
-            <label>
-                <input [(ngModel)]="this.user.lastName" placeholder="lastname" name="lastName" required/>
-            </label>
+        <br><br>
+        <div class="row">
+            <div class="email-container col-sm-6">
+                <div><span>Email: </span>{{user.email}}</div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.user.email" placeholder="Email" name="email" required minlength="7" />
+                    </label>
+                </div>
+                <div *ngIf="!(this.user.email)" class="required-notification">
+                    Email required!
+                </div>
+            </div>
+            <div class="username-container col-sm-6">
+                <div><span>Username: </span>{{user.username}}</div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.user.username" placeholder="Username" name="username" required />
+                    </label>
+                </div>
+                <div *ngIf="!(this.user.username)" class="required-notification">
+                    Username required!
+                </div>
+            </div>
         </div>
-        <div><span>Email: </span>{{user.email}}</div>
-        <div>
-            <label>
-                <input [(ngModel)]="this.user.email" placeholder="email" name="email" required minlength="7"/>
-            </label>
+        <br><br>
+        <div class="row">
+            <div class="password-container col-sm-6">
+                <div><span>Enter Password: </span></div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.user.password" placeholder="Create Password" name="password"
+                            type="password" required />
+                    </label>
+                </div>
+                <div *ngIf="!(this.user.password)" class="required-notification">
+                    Password required!
+                </div>
+            </div>
+            <div class="favorite-boy-container col-sm-6">
+                <div><span>Favorite Backstreet Boy: </span>{{favoriteBoy}}</div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.favoriteBoy" placeholder="Howie" name="password" />
+                    </label>
+                </div>
+
+            </div>
         </div>
-        <div><span>Username: </span>{{user.username}}</div>
-        <div>
-            <label>
-                <input [(ngModel)]="this.user.username" placeholder="username" name="username" required/>
-            </label>
+        <br><br>
+
+        <div class="row">
+            <button (click)="onSubmit()" class="btn btn-primary btn-block">Register</button>
         </div>
-        <div><span>Enter Password: </span></div>
-        <div>
-            <label>
-                <input [(ngModel)]="this.user.password" placeholder="Create Password" name="password" type="password" required/>
-            </label>
-        </div>
-        
-        <button (click)="onSubmit()">Save</button>
 
     </div>
 </body>
