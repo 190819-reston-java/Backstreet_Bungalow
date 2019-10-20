@@ -10,11 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.revature.beans.Posts;
@@ -22,6 +21,7 @@ import com.revature.beans.Users;
 import com.revature.services.Services;
 
 @Controller
+@MultipartConfig
 public class FrontController {
 
 	
@@ -115,6 +115,7 @@ public class FrontController {
 	@PostMapping("/picture-upload")
 	@ResponseBody
 	public ResponseEntity<Boolean> addNewPhoto(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
+		
 		Boolean b = services.addNewPhoto(request);
 		if (b == false)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
