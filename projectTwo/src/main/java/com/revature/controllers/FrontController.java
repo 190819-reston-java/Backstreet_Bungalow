@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,7 @@ import com.revature.beans.Posts;
 import com.revature.beans.Users;
 import com.revature.services.Services;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
 public class FrontController {
 
@@ -66,6 +68,7 @@ public class FrontController {
 		return ResponseEntity.status(HttpStatus.OK).body(services.getAllUsers());
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/updateUser")
 	@ResponseBody
 	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {

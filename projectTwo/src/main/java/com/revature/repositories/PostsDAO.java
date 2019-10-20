@@ -38,13 +38,15 @@ public class PostsDAO {
 //		return a;
 //	}
 	
+	@Transactional
 	public List<Posts> getAllPostsFromOneUser(String username) {
+		System.out.println("boob");
 		Session s = sf.getCurrentSession();
 		
 		@SuppressWarnings("unchecked")
 		List<Posts> Posts = s.createCriteria(Posts.class)
 			.add(Restrictions.eq("username", username)).list();
-		
+		 System.out.println(Posts.toString());
 		return Posts;
 	}
 	
@@ -65,9 +67,9 @@ public class PostsDAO {
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewPost(Posts post) {
-		
+		System.out.println(post.toString());
 		Session s = sf.getCurrentSession();
-		if (post.getUserId() == null || post.getUsername() == null || post.getTitle() == null
+		if (post.getUserId() == 0 || post.getUsername() == null || post.getTitle() == null
 				|| post.getContent() == null)
 			return false;
 		try {

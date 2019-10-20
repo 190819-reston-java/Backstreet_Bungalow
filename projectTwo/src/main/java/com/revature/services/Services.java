@@ -24,7 +24,11 @@ public class Services {
 
 	@Autowired
 	private UsersDAO usersDAO;
+	
+	@Autowired
 	private PostsDAO postsDAO;
+	
+	@Autowired
 	private PhotosDAO photosDAO;
 	
 	public Services() {
@@ -75,7 +79,9 @@ public class Services {
 		Users u = null;
 		ObjectMapper om = new ObjectMapper();
 		u = om.readValue(request.getReader(), Users.class);
+		System.out.println(u.toString());
 		String username = u.getUsername();
+		System.out.println(username);
 		return postsDAO.getAllPostsFromOneUser(username);
 	}
 	
@@ -83,7 +89,7 @@ public class Services {
 		Posts p = null;
 		ObjectMapper om = new ObjectMapper();
 		p = om.readValue(request.getReader(), Posts.class);
-		p.setId(0);
+//		p.setId(0);
 		return postsDAO.addNewPost(p);
 	}
 	
