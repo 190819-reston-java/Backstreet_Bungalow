@@ -108,4 +108,20 @@ public class FrontController {
 		else
 			return ResponseEntity.status(HttpStatus.OK).body(b);
 	}
+	
+	@GetMapping("/getRecentPosts")
+	@ResponseBody
+	public ResponseEntity<List<Posts>> getAllPosts(HttpServletRequest request, HttpServletResponse response) {
+		return ResponseEntity.status(HttpStatus.OK).body(services.getRecentPosts());
+	}
+	
+	@PostMapping("/picture-upload")
+	@ResponseBody
+	public ResponseEntity<Boolean> addNewPhoto(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
+		Boolean b = services.addNewPhoto(request);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
+	}
 }

@@ -134,5 +134,7 @@ public class Posts {
 		return "Posts [id=" + id + ", userId=" + userId + ", username=" + username + ", title=" + title + ", content="
 				+ content + "]";
 	}
+
+	
 	
 }
