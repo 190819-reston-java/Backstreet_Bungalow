@@ -15,7 +15,7 @@ export class UserProfileDetailsComponent implements OnInit {
 
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
-  private updateUrl: string = "localhost:8080/user/update";
+  private updateUrl: string = "http://localhost:8080/user/update";
 
   user = new User;
 
