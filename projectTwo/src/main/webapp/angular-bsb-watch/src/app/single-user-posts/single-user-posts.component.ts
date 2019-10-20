@@ -14,28 +14,30 @@ export class SingleUserPostsComponent implements OnInit {
 
   constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
 
-  getPostsUrl = "";
+  getPostsUrl = "http://localhost:8080/Project2/postsFromOneUser";
 
-  post = new BlogPost;
+  posts: any;
 
   selectedUser = new User;
 
   getCurrentUserPost() {
-    let observable = this.http.post(this.getPostsUrl, this.currentUser.user.username)
-      observable.subscribe((result: any) => {this.post = result})
+    console.log(JSON.stringify(this.currentUser.user));
+    let observable = this.http.post(this.getPostsUrl, JSON.stringify(this.currentUser.user))
+      observable.subscribe((result: any) => {this.posts = result})
   }
 
   getSelectedUserPost(user: User) {
     let observable = this.http.post(this.getPostsUrl, user.username)
-      observable.subscribe((result: any) => {this.post = result})
+      observable.subscribe((result: any) => {this.posts = result})
   }
 
   ngOnInit() {
-    if(this.selectedUser === null) {
-      this.getCurrentUserPost();
-    } else if(this.selectedUser !== null){
-      this.getSelectedUserPost(this.selectedUser);
-    }
+    // if(this.selectedUser === null) {
+    //   this.getCurrentUserPost();
+    // } else if(this.selectedUser !== null){
+    //   this.getSelectedUserPost(this.selectedUser);
+    // }
+    this.getCurrentUserPost();
   }
 
   
