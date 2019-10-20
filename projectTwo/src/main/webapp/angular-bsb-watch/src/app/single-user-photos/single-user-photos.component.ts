@@ -26,7 +26,7 @@ export class SingleUserPhotosComponent implements OnInit {
 
   getCurrentUserPost() {
     let observable = this.http.post(this.getPhotosUrl, this.currentUser.user.username)
-      observable.subscribe((result: any) => {this.photos = result})
+      observable.subscribe((result: any) => {this.photo = result})
   }
 
   getSelectedUserPost(user: User) {

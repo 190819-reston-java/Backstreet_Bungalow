@@ -14,16 +14,21 @@ import { CurrentUserService } from '../current-user.service';
 export class UserProfileDetailsComponent implements OnInit {
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private currentUser: CurrentUserService) { }
 
   private updateUrl: string = "http://localhost:8080/Project2/updateUser";
 
   user: User = this.currentUser.getUser();
 
-  onSubmit(user: User)  {
+  onSubmit(user: User) {
+
     let observable = this.http.put(this.updateUrl, JSON.stringify(user))
-    observable.subscribe((result: any) => {this.currentUser.user = result
+
+    console.log(user);
+
+    observable.subscribe((result: any) => {
+      this.currentUser.user = result
     })
   }
 
