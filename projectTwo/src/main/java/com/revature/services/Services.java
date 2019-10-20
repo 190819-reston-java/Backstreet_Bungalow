@@ -1,9 +1,13 @@
 package com.revature.services;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -67,6 +71,7 @@ public class Services {
 		Users u = null;
 		ObjectMapper om = new ObjectMapper();
 		u = om.readValue(request.getReader(), Users.class);
+		u.setId((long) request.getSession().getAttribute("id"));
 		return usersDAO.updateUser(u);
 		
 	}
@@ -103,11 +108,6 @@ public class Services {
 	}
 	
 	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
-		Photos f = null;
-		ObjectMapper om = new ObjectMapper();
-		f = om.readValue(request.getReader(), Photos.class);
-		System.out.println(f.toString());
 		return false;
-	//	return photosDAO.addNewphoto(f.getFile(), request);
 	}
 }
