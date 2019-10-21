@@ -114,11 +114,23 @@ public class Services {
 		return postsDAO.addNewPost(p);
 	}
 	
+	public List<Photos> getRecentPhotos() {
+		return photosDAO.getRecentPhotos();
+	}
+	
 	public boolean addNewPhoto(MultipartHttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
 		
 		MultipartFile f = request.getFile("image");
 		byte[] bytes = f.getBytes();
-		return photosDAO.addNewPhoto(bytes);
+		return photosDAO.addNewPhoto(bytes, request);
+	}
+
+	public List<Photos> getPhotosUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		Users u = null;
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		String username = u.getUsername();
+		return photosDAO.getAllPhotosFromOneUser(username);
 	}
 	
 //	public byte[] createLocalFile(MultipartHttpServletRequest request) throws IOException, ServletException {
