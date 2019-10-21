@@ -1,17 +1,21 @@
 .container{
-    margin-left: 20%;
+    margin-left: 34%;
     padding: 15px;
-}.login {
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 25%;
+}
+.container.row {
+    width: 50%;
+}
+.header-form-container {
+    margin-left: 4%;
+    width: 100%;
+}
+.login {
     background-color: rgba(77, 75, 75, 0.767);
     margin-top: 50px;
     padding: 25px;
-    padding-left: 17%;
-    
 }
 .login input {
-    margin: 5px;
     margin-bottom: 20px;
     display: block;
 }

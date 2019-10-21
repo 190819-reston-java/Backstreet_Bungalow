@@ -28,7 +28,6 @@ export class LatestPhotosComponent implements OnInit {
 
   getUsernameForPhoto(username: number) {
 
-    this.photoUser.id = id;
     let observable = this.userService.getUser(this.photoUser,this.getUserUrl);
     observable.subscribe(
       (result) => {
