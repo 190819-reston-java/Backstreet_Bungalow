@@ -115,15 +115,17 @@ public class Services {
 	}
 	
 	public boolean addNewPhoto(MultipartHttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
-		byte[] bytes = createLocalFile(request);
+		
+		MultipartFile f = request.getFile("image");
+		byte[] bytes = f.getBytes();
 		return photosDAO.addNewPhoto(bytes);
 	}
 	
-	public byte[] createLocalFile(MultipartHttpServletRequest request) throws IOException, ServletException {
-		
-		MultipartFile f = request.getFile("image");		
-		byte[] bytes = f.getBytes();
-		
-		return bytes;
-	}
+//	public byte[] createLocalFile(MultipartHttpServletRequest request) throws IOException, ServletException {
+//		
+//		MultipartFile f = request.getFile("image");		
+//		byte[] bytes = f.getBytes();
+//		
+//		return bytes;
+//	}
 }

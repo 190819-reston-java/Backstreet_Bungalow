@@ -63,7 +63,7 @@ public class PhotosDAO {
 		//if (request.getSession().getAttribute("id") == null)
 		//	return false;
 		//photo.setUsersId((long) request.getSession().getAttribute("id"));
-		photo.setUsersId(1);
+		photo.setUsersId(2);
 		photo.setId(0);
 		photo.setImg(bytes);
 		try {
