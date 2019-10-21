@@ -1,35 +1,53 @@
-
 <div class="container">
     <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}} Details</h2>
-    <div><h3>Your Info:</h3></div>
+    <div>
+        <h3 *ngIf="!this.currentUser.validSelectedUser">Your Info:</h3>
+        <h3 *ngIf="this.currentUser.validSelectedUser">{{this.selectedUser.username}}'s Info:</h3>
+    </div>
     <div><span>First Name: </span>{{user.first_name}}</div>
     <div>
         <label>
-            <input [(ngModel)]="this.user.firstName" placeholder="firstname" name="firstName"/>
+            <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.firstName" placeholder="firstname"
+                name="firstName" />
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.firstName}}"
+                name="selectedFirstName" [readonly]="true" />
         </label>
     </div>
     <div><span>Last Name: </span>{{user.last_name}}</div>
     <div>
         <label>
-            <input [(ngModel)]="this.user.lastName" placeholder="lastname" name="lastName"/>
+            <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.lastName" placeholder="lastname"
+                name="lastName" />
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.lastName}}"
+                name="selectedLastName" [readonly]="true" />
+
         </label>
     </div>
     <div><span>Username: </span>{{user.username}}</div>
     <div>
         <label>
-            <input [(ngModel)]="this.user.username" placeholder="username" name="username" [readonly]="true"/>
+            <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.username" placeholder="username"
+                name="username" [readonly]="true" />
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.username}}"
+                name="selectedUsername" [readonly]="true" />
         </label>
     </div>
     <div><span>Email: </span>{{user.email}}</div>
     <div>
         <label>
-            <input [(ngModel)]="this.user.email" placeholder="email" name="email"/>
+            <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.email" placeholder="email"
+                name="email" />
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.email}}"
+                name="selectedEmail" [readonly]="true" />
         </label>
     </div>
     <div><span>Password: </span></div>
     <div>
         <label>
-            <input type="password" [(ngModel)]="this.user.password" placeholder="Enter Password" name="password"/>
+            <input *ngIf="!this.currentUser.validSelectedUser" type="password" [(ngModel)]="this.user.password"
+                placeholder="Enter Password" name="password" />
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="N/A" name="selectedPassword"
+                [readonly]="true" />
         </label>
     </div>
     <!-- <div><span>Confirm Password: </span></div>
@@ -38,6 +56,15 @@
             <input type="password" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password"/>
         </label>
     </div> -->
-    <button (click)="onSubmit(this.user)">Update</button>
-
+    <button *ngIf="!this.currentUser.validSelectedUser" (click)="onSubmit(this.user)">Update</button>
+    <button *ngIf="this.currentUser.validSelectedUser" (click)="this.currentUser.validSelectedUser=false">My
+        Profile</button>
+    <br><br><br>
+    <div><span>Find User: </span>{{selectedUser.username}}</div>
+    <div>
+        <label>
+            <input [(ngModel)]="this.selectedUser.username" placeholder="Username" name="selected-username" />
+        </label>
+    </div>
+    <button (click)="onSearch(this.selectedUser)">Search</button>
 </div>

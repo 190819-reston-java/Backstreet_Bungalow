@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { CurrentUserService } from '../current-user.service';
@@ -12,13 +12,15 @@ import { User } from '../user';
 })
 export class SingleUserPostsComponent implements OnInit {
 
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  constructor(
+    private http: HttpClient, 
+    private currentUser: CurrentUserService) { }
 
   getPostsUrl = "http://localhost:8080/Project2/postsFromOneUser";
-
   posts: any;
+  selectedUser: User = new User();
 
-  selectedUser = new User;
+  @Input() vsu: boolean = this.currentUser.validSelectedUser;
 
   getCurrentUserPost() {
     console.log(JSON.stringify(this.currentUser.user));
@@ -32,12 +34,13 @@ export class SingleUserPostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if(this.selectedUser === null) {
-    //   this.getCurrentUserPost();
-    // } else if(this.selectedUser !== null){
-    //   this.getSelectedUserPost(this.selectedUser);
-    // }
     this.getCurrentUserPost();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    if(this.currentUser.validSelectedUser) this.getSelectedUserPost(this.currentUser.selectedUser);
+    if(!this.currentUser.validSelectedUser) this.getCurrentUserPost();
   }
 
   

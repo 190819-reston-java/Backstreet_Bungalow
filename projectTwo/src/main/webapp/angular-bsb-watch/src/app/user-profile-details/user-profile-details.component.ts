@@ -18,8 +18,11 @@ export class UserProfileDetailsComponent implements OnInit {
     private currentUser: CurrentUserService) { }
 
   private updateUrl: string = "http://localhost:8080/Project2/updateUser";
+  private searchUrl: string = "http://localhost:8080/Project2/getOneUser"
 
   user: User = this.currentUser.getUser();
+  selectedUser: User = new User();
+  
 
   onSubmit(user: User) {
 
@@ -29,12 +32,29 @@ export class UserProfileDetailsComponent implements OnInit {
 
     observable.subscribe(
       (result: any) => {
-      alert("Successfully updated information!");},
+        alert("Successfully updated information!");
+      },
       (err) => { alert("Email already found in system"); }
     )
   }
 
+  onSearch(selectedUser: User) {
+    let observable = this.http.post(this.searchUrl, JSON.stringify(selectedUser))
+
+
+    observable.subscribe(
+      (result: any) => {
+        this.selectedUser = result;
+        this.selectedUser.password = "";
+        this.currentUser.validSelectedUser = true;
+        this.currentUser.selectedUser = result;
+      },
+      (err) => { alert("User does not exist"); }
+    )
+  }
+
   ngOnInit() {
+
   }
 
 }

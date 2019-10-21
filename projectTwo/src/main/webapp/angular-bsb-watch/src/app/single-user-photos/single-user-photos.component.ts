@@ -13,35 +13,32 @@ import { User } from '../user';
 })
 export class SingleUserPhotosComponent implements OnInit {
 
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  constructor(
+    private http: HttpClient,
+    private currentUser: CurrentUserService) { }
 
-  photo = new Photo;
-  
-  getPhotosUrl = "";
-
-  selectedUser = new User;
-
-
+  getPhotosUrl = "http://localhost:8080/Project2/picturesFromOneUser";
+  photos: any;
+  selectedUser: User = new User();
 
 
-  getCurrentUserPost() {
+
+
+  getCurrentUserPhotos() {
     let observable = this.http.post(this.getPhotosUrl, this.currentUser.user.username)
-      observable.subscribe((result: any) => {this.photo = result})
+    observable.subscribe((result: any) => { this.photos = result })
   }
 
-  getSelectedUserPost(user: User) {
+  getSelectedUserPhotos(user: User) {
     let observable = this.http.post(this.getPhotosUrl, user.username)
-      observable.subscribe((result: any) => {this.photo = result})
+    observable.subscribe((result: any) => { this.photos = result })
   }
 
   ngOnInit() {
-    if(this.selectedUser === null) {
-      this.getCurrentUserPost();
-    } else if(this.selectedUser !== null){
-      this.getSelectedUserPost(this.selectedUser);
-    }
+      this.getCurrentUserPhotos();
+   
   }
 
-  
+
 
 }

@@ -1,1 +1,15 @@
-<h2>Your Photos!</h2>
+<div class="container">
+        <div class="column-header">
+            <h2>
+                Your Photos!
+            </h2>
+        </div>
+        
+        <div class="posts-container">
+            <div *ngFor="let photo of photos">
+                <div>
+                    <p>{{photo.content}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
