@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-latest-blog-posts',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestBlogPostsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+
+  ) { }
+
+    posts: any;
+    getLatestPostsUrl = "http://localhost:8080/Project2/getRecentPosts";
+
+
 
   ngOnInit() {
+    this.getPosts();
   }
+
+  
+  getPosts() {
+    let observable = this.http.get(this.getLatestPostsUrl);
+    observable.subscribe(
+      (result: any) => {
+        this.posts = result;
+        console.log(this.posts);
+      }
+    
+    );
+
+  }
+
 
 }

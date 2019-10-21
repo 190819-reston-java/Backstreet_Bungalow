@@ -2,24 +2,32 @@
     
     <div class="container">
         <div class="post-form">
-            <h1>Blog Post!</h1>
+            <!-- <h1>Blog Post!</h1>
             <label class="section-title">
                 <h5>New Blog Post</h5>
-            </label>
-            <div class><span>Subject: </span></div>
+            </label> -->
+            
+            <h3>
+                <div class><span>Title: </span></div>
+            </h3>
+            <br>
             <div>
                 <label>
-                    <input [(ngModel)]="post.subject" placeholder="subject"/>
+                    <input [(ngModel)]="this.post.title" placeholder="subject" name="title" required minlength="3"/>
                 </label>
             </div>
-            <div class><span>Post: </span></div>
+            <br><br>
+            <h3>
+                <div class><span>Post: </span></div>
+            </h3>
             <div id="body">
                 <label>
                 </label>
-                <textarea class="form-control" rows="10" [(ngModel)]="post.body"></textarea>
+                <textarea class="form-control" rows="10" [(ngModel)]="this.post.content" name="content" required minlength="3"></textarea>
             </div>
+            <br><br>
             <div>
-                <button (click)="onSubmit()">Post</button>
+                <button (click)="onSubmit()">Submit Post</button>
             </div>
          </div>   
     </div>

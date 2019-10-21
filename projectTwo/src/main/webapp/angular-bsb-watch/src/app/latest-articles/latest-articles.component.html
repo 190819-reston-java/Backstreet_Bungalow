@@ -11,12 +11,14 @@
 
     <div class="container">
         <div class="grid grid-pad">
-            <a *ngFor="let article of news.articles; let i=index" class="col-1-4" href={{article.url}}>
-                <div *ngIf="i<6" class="module">
-                    <img src={{article.urlToImage}} height="250" width="250">
-                    <h4>{{article.title}}</h4>
-                </div>
-            </a>
+            <div *ngFor="let article of news.articles; let i=index" >
+                <a *ngIf="i>13 && i<20"  class="col-1-4" href={{article.url}}>
+                    <div class="module">
+                        <img src={{article.urlToImage}} height="250" width="250">
+                        <h4>{{article.title}}</h4>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </body>

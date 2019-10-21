@@ -1,11 +1,13 @@
 <div id="mySidenav" class="sidenav container">
-    <a routerLink="login" routerLinkActive="active" class="nav-item nav-link">Login</a>
-    <a routerLink="register" routerLinkActive="active" class="nav-item nav-link">Register</a>
-    <a *ngIf="this.loggedIn" routerLink="profile" routerLinkActive="active" id="profile-button" class="nav-item nav-link">Profile</a>
-    <a routerLink="articles" routerLinkActive="active" id="articles-button" class="nav-item nav-link">Articles</a>
-    <a routerLink="members" routerLinkActive="active" id="member-button" class="nav-item nav-link">Members</a>
-    <!-- <a routerLink="popular" id="popular-button">Popular</a> -->
-    <a routerLink="photos" routerLinkActive="active" id="photos-button" class="nav-item nav-link">Photos</a>
-    <a routerLink="blog-posts" routerLinkActive="active" id="blogs-button" class="nav-item nav-link">Blogs</a>
-    <a routerLink="location" routerLinkActive="active" id="location-button" class="nav-item nav-link">Bungalow</a>
-  </div>
+  <a *ngIf="!this.currentUser.user" routerLink="login" routerLinkActive="active" class="nav-item nav-link">Login</a>
+  <a *ngIf="!this.currentUser.user" routerLink="register" routerLinkActive="active" class="nav-item nav-link">Register</a>
+  <a *ngIf="this.currentUser.user" routerLinkActive="active" class="nav-item nav-link" (click)="clickLogout()">Logout</a>
+  <a *ngIf="this.currentUser.user" routerLink="profile" routerLinkActive="active" id="profile-button"
+    class="nav-item nav-link">Profile</a>
+  <a routerLink="articles" routerLinkActive="active" id="articles-button" class="nav-item nav-link">Articles</a>
+  <a routerLink="members" routerLinkActive="active" id="member-button" class="nav-item nav-link">Members</a>
+  <!-- <a routerLink="popular" id="popular-button">Popular</a> -->
+  <a routerLink="photos" routerLinkActive="active" id="photos-button" class="nav-item nav-link">Photos</a>
+  <a routerLink="blog-posts" routerLinkActive="active" id="blogs-button" class="nav-item nav-link">Blogs</a>
+  <a routerLink="location" routerLinkActive="active" id="location-button" class="nav-item nav-link">Bungalow</a>
+</div>

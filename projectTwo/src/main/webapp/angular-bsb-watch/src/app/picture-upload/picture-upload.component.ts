@@ -14,7 +14,7 @@ export class PictureUploadComponent implements OnInit {
   }
 
   selectedFile: File = null;
-  pictureUploadUrl = "localhost:8080/Project2/picture-upload"
+  pictureUploadUrl = "http://localhost:8080/Project2/picture-upload"
 
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];

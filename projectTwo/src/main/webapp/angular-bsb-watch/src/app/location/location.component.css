@@ -10,6 +10,7 @@ agm-map {
   .mat-card-header-info {
     float: left;
     width: 75%;
+    color: white;
   }
 html,
 body {
@@ -49,6 +50,8 @@ body {
 
   .example-card {
     max-width: 1000px;
+    background-color: rgba(77, 75, 75, 0.767);
+
   }
   
   .example-header-image {
@@ -60,4 +63,9 @@ body {
   .example-header-info {
     margin-left: 10px;
     float: right;
+    color: white;
+  }
+
+  mat-card-subtitle {
+    color: white;
   }

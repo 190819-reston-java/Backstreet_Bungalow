@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { CurrentUserService } from '../current-user.service';
@@ -12,30 +12,35 @@ import { User } from '../user';
 })
 export class SingleUserPostsComponent implements OnInit {
 
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  constructor(
+    private http: HttpClient, 
+    private currentUser: CurrentUserService) { }
 
-  getPostsUrl = "";
+  getPostsUrl = "http://localhost:8080/Project2/postsFromOneUser";
+  posts: any;
+  selectedUser: User = new User();
 
-  post = new BlogPost;
-
-  selectedUser = new User;
+  @Input() vsu: boolean = this.currentUser.validSelectedUser;
 
   getCurrentUserPost() {
-    let observable = this.http.post(this.getPostsUrl, this.currentUser.user.username)
-      observable.subscribe((result: any) => {this.post = result})
+    console.log(JSON.stringify(this.currentUser.user));
+    let observable = this.http.post(this.getPostsUrl, JSON.stringify(this.currentUser.user))
+      observable.subscribe((result: any) => {this.posts = result})
   }
 
   getSelectedUserPost(user: User) {
     let observable = this.http.post(this.getPostsUrl, user.username)
-      observable.subscribe((result: any) => {this.post = result})
+      observable.subscribe((result: any) => {this.posts = result})
   }
 
   ngOnInit() {
-    if(this.selectedUser === null) {
-      this.getCurrentUserPost();
-    } else if(this.selectedUser !== null){
-      this.getSelectedUserPost(this.selectedUser);
-    }
+    this.getCurrentUserPost();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    if(this.currentUser.validSelectedUser) this.getSelectedUserPost(this.currentUser.selectedUser);
+    if(!this.currentUser.validSelectedUser) this.getCurrentUserPost();
   }
 
   

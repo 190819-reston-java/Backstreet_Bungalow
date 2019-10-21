@@ -52,6 +52,15 @@
   .grid-pad > [class*='col-']:last-of-type {
     padding-right: 20px;
   }
+
+  h4 {
+    display: block;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
   /* @media (max-width: 600px) {
     .module {
       font-size: 10px;

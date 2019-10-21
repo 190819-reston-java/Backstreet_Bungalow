@@ -9,9 +9,15 @@ export class CurrentUserService {
   
   constructor() { }
 
-  public user: User
+  public user: User;
+  public selectedUser: User = new User();
+  public validSelectedUser: boolean = false;
 
   getUser()  {
     return this.user;
+  }
+
+  getSelectedUser() {
+    return this.selectedUser;
   }
 }

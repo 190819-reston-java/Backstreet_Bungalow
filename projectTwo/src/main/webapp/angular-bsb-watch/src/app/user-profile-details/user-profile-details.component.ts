@@ -13,19 +13,48 @@ import { CurrentUserService } from '../current-user.service';
 })
 export class UserProfileDetailsComponent implements OnInit {
 
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  constructor(
+    private http: HttpClient,
+    private currentUser: CurrentUserService) { }
 
-  private updateUrl: string = "localhost:8080/user/update";
+  private updateUrl: string = "http://localhost:8080/Project2/updateUser";
+  private searchUrl: string = "http://localhost:8080/Project2/getOneUser"
 
-  user = new User;
+  user: User = this.currentUser.getUser();
+  selectedUser: User = new User();
+  
 
-  onSubmit(user: User)  {
-    let observable = this.http.put(this.updateUrl, JSON.stringify(user))
-    observable.subscribe((result: any) => {this.currentUser.user = result
-    })
+  onSubmit(user: User) {
+
+    let observable = this.http.post(this.updateUrl, JSON.stringify(user))
+
+    console.log(user);
+
+    observable.subscribe(
+      (result: any) => {
+        alert("Successfully updated information!");
+      },
+      (err) => { alert("Email already found in system"); }
+    )
+  }
+
+  onSearch(selectedUser: User) {
+    let observable = this.http.post(this.searchUrl, JSON.stringify(selectedUser))
+
+
+    observable.subscribe(
+      (result: any) => {
+        this.selectedUser = result;
+        this.selectedUser.password = "";
+        this.currentUser.validSelectedUser = true;
+        this.currentUser.selectedUser = result;
+      },
+      (err) => { alert("User does not exist"); }
+    )
   }
 
   ngOnInit() {
+
   }
 
 }

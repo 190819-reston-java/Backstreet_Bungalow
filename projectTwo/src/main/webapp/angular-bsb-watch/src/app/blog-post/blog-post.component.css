@@ -1,11 +1,11 @@
 .container {
-    margin-left: 160px;
-    background-color: hsla(0, 33%, 46%, 0.342);
+    margin-left: 23%;
+    background-color: rgba(77, 75, 75, 0.767);
     padding: 50px;
-
+    color: white;
+    font-size: 100%;
 }
 
 .post-form {
-    background-color: #efeff0;
     padding: 20px;
 }

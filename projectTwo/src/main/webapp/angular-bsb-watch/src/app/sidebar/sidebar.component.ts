@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { CurrentUserService } from '../current-user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +11,10 @@ import { HttpClient } from '@angular/common/http'
 export class SidebarComponent implements OnInit {
 
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private currentUser: CurrentUserService,
+    private router: Router) { }
 
   news: any;
 
@@ -18,6 +23,11 @@ export class SidebarComponent implements OnInit {
     observable.subscribe((result => {
       this.news = result;
     }))
+  }
+
+  clickLogout() {
+    this.currentUser.user = undefined;
+    this.router.navigate(['login']);
   }
 
   loggedIn=true;

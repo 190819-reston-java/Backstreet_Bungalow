@@ -23,7 +23,7 @@ export class UserService {
    
   
   public getUser(user: User, url: string){
-    
+    return this.http.post(url, user);
   }
 
   public updateUser (user: User, url: string): Observable<any> {

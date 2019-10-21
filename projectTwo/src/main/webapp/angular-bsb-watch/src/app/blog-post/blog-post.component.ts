@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CurrentUserService } from '../current-user.service';
 import { BlogPost } from '../post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-post',
@@ -10,19 +11,35 @@ import { BlogPost } from '../post';
 })
 export class BlogPostComponent implements OnInit {
 
-  constructor(private http: HttpClient, private currentUser: CurrentUserService) { }
+  constructor(
+    private http: HttpClient, 
+    private currentUser: CurrentUserService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  post: BlogPost= new BlogPost();
-  
+  post: BlogPost = new BlogPost();
+  resultPost: any;
 
-  newBlogUrl: string = "localhost:8080/blog/create"
+  newBlogUrl: string = "http://localhost:8080/Project2/newPost"
 
   onSubmit() {
-    this.post.user = this.currentUser.user;
-    let observable = this.http.post(this.newBlogUrl, JSON.stringify(this.post))
+    this.post.userId = this.currentUser.user.id;
+    this.post.username = this.currentUser.user.username;
+    console.log(JSON.stringify(this.post));
+    let observable = this.http.post(this.newBlogUrl, JSON.stringify(this.post));
+
+    observable.subscribe(
+      (result: any) => {
+        this.resultPost = result;
+        console.log(this.resultPost);
+        alert("Successfully submitted!");
+        this.router.navigate(['profile']);
+
+      },
+      (err) => { alert("Invalid submission, please try again") }
+    );
   }
 
 }

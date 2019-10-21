@@ -7,21 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.revature.beans.Posts;
 import com.revature.beans.Users;
 import com.revature.services.Services;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @Controller
+@MultipartConfig
 public class FrontController {
 
 	
@@ -66,6 +68,7 @@ public class FrontController {
 		return ResponseEntity.status(HttpStatus.OK).body(services.getAllUsers());
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/updateUser")
 	@ResponseBody
 	public ResponseEntity<Boolean> updateUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
@@ -100,6 +103,23 @@ public class FrontController {
 	@ResponseBody
 	public ResponseEntity<Boolean> addNewPost(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
 		Boolean b = services.addNewPost(request);
+		if (b == false)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(b);
+	}
+	
+	@GetMapping("/getRecentPosts")
+	@ResponseBody
+	public ResponseEntity<List<Posts>> getAllPosts(HttpServletRequest request, HttpServletResponse response) {
+		return ResponseEntity.status(HttpStatus.OK).body(services.getRecentPosts());
+	}
+	
+	@PostMapping("/picture-upload")
+	@ResponseBody
+	public ResponseEntity<Boolean> addNewPhoto(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
+		
+		Boolean b = services.addNewPhoto(request);
 		if (b == false)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
 		else

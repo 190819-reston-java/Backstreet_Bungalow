@@ -1,11 +1,18 @@
 package com.revature.services;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +20,9 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.beans.Photos;
 import com.revature.beans.Posts;
+import com.revature.beans.TempFile;
 import com.revature.beans.Users;
 import com.revature.repositories.PhotosDAO;
 import com.revature.repositories.PostsDAO;
@@ -24,7 +33,11 @@ public class Services {
 
 	@Autowired
 	private UsersDAO usersDAO;
+	
+	@Autowired
 	private PostsDAO postsDAO;
+	
+	@Autowired
 	private PhotosDAO photosDAO;
 	
 	public Services() {
@@ -58,6 +71,7 @@ public class Services {
 		Users u = null;
 		ObjectMapper om = new ObjectMapper();
 		u = om.readValue(request.getReader(), Users.class);
+		u.setId((long) request.getSession().getAttribute("id"));
 		return usersDAO.updateUser(u);
 		
 	}
@@ -75,20 +89,25 @@ public class Services {
 		Users u = null;
 		ObjectMapper om = new ObjectMapper();
 		u = om.readValue(request.getReader(), Users.class);
+		System.out.println(u.toString());
 		String username = u.getUsername();
+		System.out.println(username);
 		return postsDAO.getAllPostsFromOneUser(username);
+	}
+	
+	public List<Posts> getRecentPosts() {
+		return postsDAO.getRecentPosts();
 	}
 	
 	public boolean addNewPost(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
 		Posts p = null;
 		ObjectMapper om = new ObjectMapper();
 		p = om.readValue(request.getReader(), Posts.class);
-		p.setId(0);
+//		p.setId(0);
 		return postsDAO.addNewPost(p);
 	}
 	
-	public boolean addNewphoto(File file, HttpServletRequest request) {
-		//photosDAO.addNewphoto(file, request)
+	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
 		return false;
 	}
 }
