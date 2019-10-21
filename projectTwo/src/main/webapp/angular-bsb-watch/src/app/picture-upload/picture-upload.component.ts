@@ -13,16 +13,16 @@ export class PictureUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  seleectedFile: File = null;
+  selectedFile: File = null;
   pictureUploadUrl = "localhost:8080/Project2/picture-upload"
 
   onFileSelected(event) {
-    this.seleectedFile = <File>event.target.files[0];
+    this.selectedFile = <File>event.target.files[0];
   }
 
   onUpload() {
     const formData = new FormData();
-    formData.append('image', this.seleectedFile, this.seleectedFile.name);
+    formData.append('image', this.selectedFile, this.selectedFile.name);
     this.http.post(this.pictureUploadUrl, formData)
       .subscribe(response => {
         console.log(response);  
