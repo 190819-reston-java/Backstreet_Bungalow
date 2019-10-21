@@ -81,8 +81,10 @@ public class PhotosDAO {
 		Session s = sf.getCurrentSession();
 		
 		Photos photo = new Photos();
-		if (request.getSession().getAttribute("id") == null)
+		if (request.getSession().getAttribute("id") == null) {
+			System.out.println(request.getSession().getAttribute("id"));
 			return false;
+		}
 		photo.setUsersId((long) request.getSession().getAttribute("id"));
 		//photo.setUsersId(9);
 		photo.setId(0);
