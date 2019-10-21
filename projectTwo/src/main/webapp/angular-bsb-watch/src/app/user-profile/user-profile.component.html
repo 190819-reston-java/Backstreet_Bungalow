@@ -1,4 +1,3 @@
-
 <body background="../../assets/images/bb6.jpg">
     <div class="container">
         <div class="row">
@@ -7,16 +6,25 @@
             <app-single-user-posts class="col-md-4 transparent-background"></app-single-user-posts>
         </div>
         <div class="row">
-            
+
             <div class="col-md-3 component-button transparent-background">
                 <h5>Create New Blog Post!</h5>
                 <Button routerLink="/newblogpost">New Blog Post</Button>
             </div>
-            <div class="col-md-4 component-button transparent-background" > 
+            <div class="col-md-4 component-button transparent-background">
                 <app-picture-upload></app-picture-upload>
             </div>
+            <div class="col-md-4 component-button transparent-background">
+                <div><span>Find User: </span>    </div>
+                <div>
+                    <label>
+                        <input [(ngModel)]="this.selectedUser.username" placeholder="Username" name="selected-username" />
+                    </label>
+                </div>
+                <button (click)="onSearch(this.selectedUser)">Search</button>
+            </div>
         </div>
-        
+
     </div>
 
 </body>

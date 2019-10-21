@@ -21,7 +21,7 @@ export class UserProfileDetailsComponent implements OnInit {
   private searchUrl: string = "http://localhost:8080/Project2/getOneUser"
 
   user: User = this.currentUser.getUser();
-  selectedUser: User = new User();
+  @Input() selectedUser: User = this.currentUser.selectedUser;
   
 
   onSubmit(user: User) {

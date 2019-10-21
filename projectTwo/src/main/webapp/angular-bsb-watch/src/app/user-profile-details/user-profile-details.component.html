@@ -2,14 +2,14 @@
     <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}} Details</h2>
     <div>
         <h3 *ngIf="!this.currentUser.validSelectedUser">Your Info:</h3>
-        <h3 *ngIf="this.currentUser.validSelectedUser">{{this.selectedUser.username}}'s Info:</h3>
+        <h3 *ngIf="this.currentUser.validSelectedUser">{{this.currentUser.selectedUser.username}}'s Info:</h3>
     </div>
     <div><span>First Name: </span>{{user.first_name}}</div>
     <div>
         <label>
             <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.firstName" placeholder="firstname"
                 name="firstName" />
-            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.firstName}}"
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.currentUser.selectedUser.firstName}}"
                 name="selectedFirstName" [readonly]="true" />
         </label>
     </div>
@@ -18,7 +18,7 @@
         <label>
             <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.lastName" placeholder="lastname"
                 name="lastName" />
-            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.lastName}}"
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.currentUser.selectedUser.lastName}}"
                 name="selectedLastName" [readonly]="true" />
 
         </label>
@@ -28,7 +28,7 @@
         <label>
             <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.username" placeholder="username"
                 name="username" [readonly]="true" />
-            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.username}}"
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.currentUser.selectedUser.username}}"
                 name="selectedUsername" [readonly]="true" />
         </label>
     </div>
@@ -37,7 +37,7 @@
         <label>
             <input *ngIf="!this.currentUser.validSelectedUser" [(ngModel)]="this.user.email" placeholder="email"
                 name="email" />
-            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.selectedUser.email}}"
+            <input *ngIf="this.currentUser.validSelectedUser" placeholder="{{this.currentUser.selectedUser.email}}"
                 name="selectedEmail" [readonly]="true" />
         </label>
     </div>
@@ -59,12 +59,5 @@
     <button *ngIf="!this.currentUser.validSelectedUser" (click)="onSubmit(this.user)">Update</button>
     <button *ngIf="this.currentUser.validSelectedUser" (click)="this.currentUser.validSelectedUser=false">My
         Profile</button>
-    <br><br><br>
-    <div><span>Find User: </span>{{selectedUser.username}}</div>
-    <div>
-        <label>
-            <input [(ngModel)]="this.selectedUser.username" placeholder="Username" name="selected-username" />
-        </label>
-    </div>
-    <button (click)="onSearch(this.selectedUser)">Search</button>
+    
 </div>

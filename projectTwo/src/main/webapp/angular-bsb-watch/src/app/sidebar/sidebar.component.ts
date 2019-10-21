@@ -27,6 +27,7 @@ export class SidebarComponent implements OnInit {
 
   clickLogout() {
     this.currentUser.user = undefined;
+    this.currentUser.validSelectedUser = false;
     this.router.navigate(['login']);
   }
 
