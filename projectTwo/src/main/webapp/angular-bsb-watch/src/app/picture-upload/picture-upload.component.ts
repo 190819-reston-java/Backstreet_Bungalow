@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CurrentUserService } from '../current-user.service';
 
 @Component({
   selector: 'app-picture-upload',
@@ -8,15 +9,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PictureUploadComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private currentUser: CurrentUserService) { }
 
   ngOnInit() {
   }
 
   selectedFile: File = null;
-  pictureUploadUrl = "http://localhost:8080/Project2/picture-upload"
+  pictureUploadUrl = "http://localhost:8080/Project2/addPhoto"
 
   onFileSelected(event) {
+    console.log(event);
     this.selectedFile = <File>event.target.files[0];
   }
 

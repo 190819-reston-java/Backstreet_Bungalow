@@ -23,6 +23,7 @@ export class LatestPhotosComponent implements OnInit {
     let observable = this.http.get(this.latestPhotosUrl);
     observable.subscribe((result => {
       this.photos = result;
+      console.log("bo");
     }))
   }
 
