@@ -62,18 +62,16 @@ public class UsersDAO {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean updateUser(Users user) {
 		Session s = sf.getCurrentSession();
-		if (s.createCriteria(Users.class).add(Restrictions.eq("username", user.getUsername())).uniqueResult() != null)
-			return false;
-		if (s.createCriteria(Users.class).add(Restrictions.eq("email", user.getEmail())).uniqueResult() != null)
-			return false;
+//		if (s.createCriteria(Users.class).add(Restrictions.eq("email", user.getEmail())).uniqueResult() != null)
+//			return false;
+		System.out.println("boobs");
 		Users u = null;
 		u = (Users) s.get(Users.class, user.getId());
+		
 		if (user.getFirstName() != null)
 			u.setFirstName(user.getFirstName());
 		if (user.getLastName() != null)
 			u.setLastName(user.getLastName());
-		if (user.getUsername() != null)
-			u.setUsername(user.getUsername());
 		if (user.getEmail() != null)
 			u.setEmail(user.getEmail());
 		if (user.getPassword() != null)

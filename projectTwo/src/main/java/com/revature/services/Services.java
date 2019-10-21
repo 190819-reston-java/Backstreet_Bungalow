@@ -71,7 +71,7 @@ public class Services {
 		Users u = null;
 		ObjectMapper om = new ObjectMapper();
 		u = om.readValue(request.getReader(), Users.class);
-		u.setId((long) request.getSession().getAttribute("id"));
+//		u.setId((long) request.getSession().getAttribute("id"));
 		return usersDAO.updateUser(u);
 		
 	}
