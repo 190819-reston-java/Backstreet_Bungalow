@@ -75,18 +75,17 @@ public class PhotosDAO {
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean addNewPhoto(byte[] bytes, MultipartHttpServletRequest request) {
+	public boolean addNewPhoto(byte[] bytes, long id) {
 		
 		
 		Session s = sf.getCurrentSession();
 		
 		Photos photo = new Photos();
-		if (request.getSession().getAttribute("id") == null)
-			return false;
-		photo.setUsersId((long) request.getSession().getAttribute("id"));
+		photo.setUsersId(id);
 		//photo.setUsersId(9);
 		photo.setId(0);
 		photo.setImg(bytes);
+		System.out.println(id);
 		try {
 			s.persist(photo);
 		} catch (Exception e) {

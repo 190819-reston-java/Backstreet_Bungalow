@@ -124,7 +124,8 @@ public class Services {
 		
 		MultipartFile f = request.getFile("image");
 		byte[] bytes = f.getBytes();
-		return photosDAO.addNewPhoto(bytes, request);
+		long id = Long.valueOf(request.getParameter("id"));
+		return photosDAO.addNewPhoto(bytes, id);
 	}
 
 	public List<Photos> getPhotosUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
