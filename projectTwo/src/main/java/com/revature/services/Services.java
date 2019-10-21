@@ -3,19 +3,25 @@ package com.revature.services;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -31,6 +37,9 @@ import com.revature.repositories.UsersDAO;
 @Service
 public class Services {
 
+	@Autowired
+	ServletContext servletContext;
+	
 	@Autowired
 	private UsersDAO usersDAO;
 	
@@ -107,7 +116,30 @@ public class Services {
 		return postsDAO.addNewPost(p);
 	}
 	
-	public boolean addNewPhoto(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
-		return false;
+	public List<Photos> getRecentPhotos() {
+		return photosDAO.getRecentPhotos();
 	}
+	
+	public boolean addNewPhoto(MultipartHttpServletRequest request) throws JsonParseException, JsonMappingException, IOException, ServletException {
+		
+		MultipartFile f = request.getFile("image");
+		byte[] bytes = f.getBytes();
+		return photosDAO.addNewPhoto(bytes, request);
+	}
+
+	public List<Photos> getPhotosUser(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		Users u = null;
+		ObjectMapper om = new ObjectMapper();
+		u = om.readValue(request.getReader(), Users.class);
+		String username = u.getUsername();
+		return photosDAO.getAllPhotosFromOneUser(username);
+	}
+	
+//	public byte[] createLocalFile(MultipartHttpServletRequest request) throws IOException, ServletException {
+//		
+//		MultipartFile f = request.getFile("image");		
+//		byte[] bytes = f.getBytes();
+//		
+//		return bytes;
+//	}
 }

@@ -11,19 +11,22 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.revature.beans.Photos;
 import com.revature.beans.Posts;
 import com.revature.beans.Users;
 import com.revature.services.Services;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
-@MultipartConfig
+@MultipartConfig(maxFileSize = 10*1024*1024,maxRequestSize = 20*1024*1024,fileSizeThreshold = 5*1024*1024)
 public class FrontController {
 
 	
@@ -111,18 +114,36 @@ public class FrontController {
 	
 	@GetMapping("/getRecentPosts")
 	@ResponseBody
-	public ResponseEntity<List<Posts>> getAllPosts(HttpServletRequest request, HttpServletResponse response) {
+	public ResponseEntity<List<Posts>> getRecentPosts(HttpServletRequest request, HttpServletResponse response) {
 		return ResponseEntity.status(HttpStatus.OK).body(services.getRecentPosts());
 	}
 	
-	@PostMapping("/picture-upload")
+	@GetMapping("/getRecentPhotos")
 	@ResponseBody
-	public ResponseEntity<Boolean> addNewPhoto(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
+	public ResponseEntity<List<Photos>> getRecentPhotos(HttpServletRequest request, HttpServletResponse response) {
+		return ResponseEntity.status(HttpStatus.OK).body(services.getRecentPhotos());
+	}
+	
+	@PostMapping("/addPhoto")
+	@ResponseBody
+	public ResponseEntity<Boolean> addNewPhoto(MultipartHttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
 		
 		Boolean b = services.addNewPhoto(request);
 		if (b == false)
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(b);
 		else
 			return ResponseEntity.status(HttpStatus.OK).body(b);
+	}
+	
+	@PostMapping("/getPhotosUser")
+	@ResponseBody
+	public ResponseEntity<List<Photos>> getPhotosUser(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException {
+		
+		List<Photos> list = services.getPhotosUser(request);
+		if (list == null)
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(list);
+		else
+			return ResponseEntity.status(HttpStatus.OK).body(list);
+		
 	}
 }
