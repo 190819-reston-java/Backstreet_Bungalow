@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ import com.revature.beans.Users;
 import com.revature.services.Services;
 
 @Controller
-@MultipartConfig
+@MultipartConfig(maxFileSize = 10*1024*1024,maxRequestSize = 20*1024*1024,fileSizeThreshold = 5*1024*1024)
 public class FrontController {
 
 	
@@ -114,7 +116,7 @@ public class FrontController {
 	
 	@PostMapping("/picture-upload")
 	@ResponseBody
-	public ResponseEntity<Boolean> addNewPhoto(HttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
+	public ResponseEntity<Boolean> addNewPhoto(MultipartHttpServletRequest request, HttpServletResponse response) throws JsonParseException, JsonMappingException, IOException, ServletException {
 		
 		Boolean b = services.addNewPhoto(request);
 		if (b == false)

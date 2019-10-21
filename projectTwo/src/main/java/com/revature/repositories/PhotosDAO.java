@@ -54,20 +54,22 @@ public class PhotosDAO {
 	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public boolean addNewphoto(File file, HttpServletRequest request) {
+	public boolean addNewPhoto(byte[] bytes) {
 		
 		
 		Session s = sf.getCurrentSession();
 		
 		Photos photo = new Photos();
-		if (request.getSession().getAttribute("id") == null)
-			return false;
-		photo.setUsersId((long) request.getSession().getAttribute("id"));
+		//if (request.getSession().getAttribute("id") == null)
+		//	return false;
+		//photo.setUsersId((long) request.getSession().getAttribute("id"));
+		photo.setUsersId(1);
 		photo.setId(0);
-		photo.setImg(ImageToByte(file));
+		photo.setImg(bytes);
 		try {
-			s.save(photo);
+			s.persist(photo);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		
