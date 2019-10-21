@@ -33,5 +33,3 @@
 - Agile methodology (Daily Standups)
 - News API
 - Google Maps API 
-- Twitter API
-- MusicMatch API
