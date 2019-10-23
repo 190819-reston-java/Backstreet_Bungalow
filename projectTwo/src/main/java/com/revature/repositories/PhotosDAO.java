@@ -76,6 +76,7 @@ public class PhotosDAO {
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public boolean addNewPhoto(byte[] bytes, long usersId) {
+
 		
 		
 		Session s = sf.getCurrentSession();
@@ -83,6 +84,7 @@ public class PhotosDAO {
 		Photos photo = new Photos();
 		
 		photo.setUsersId(usersId);
+
 		//photo.setUsersId(9);
 		photo.setId(0);
 		photo.setImg(bytes);
