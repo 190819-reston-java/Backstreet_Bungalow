@@ -4,6 +4,7 @@ import { USER } from '../mock-user';
 import { UserService } from '../user.service';
 import { CurrentUserService } from '../current-user.service';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,12 +16,13 @@ export class UserProfileComponent implements OnInit {
   private searchUrl: string = "http://localhost:8080/Project2/getOneUser"
   selectedUser: User = new User();
 
+  private eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(
     private currentUser: CurrentUserService,
     private http: HttpClient
   ) { }
-  
+
   ngOnInit() {
   }
 
@@ -34,6 +36,8 @@ export class UserProfileComponent implements OnInit {
         this.selectedUser.password = "";
         this.currentUser.validSelectedUser = true;
         this.currentUser.selectedUser = result;
+        console.log(this.currentUser.selectedUser);
+        this.eventsSubject.next();
       },
       (err) => { alert("User does not exist"); }
     )

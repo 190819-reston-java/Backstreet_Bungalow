@@ -39,6 +39,7 @@ export class RegistrationUserComponent implements OnInit {
     observable.subscribe(
       (result: any) => {
         this.currentUser.user = result;
+        console.log(result);
         if (this.currentUser.user) {
           alert("Successfully registered!");
           this.router.navigate(['profile']);

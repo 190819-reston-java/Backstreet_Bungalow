@@ -38,20 +38,6 @@ export class UserProfileDetailsComponent implements OnInit {
     )
   }
 
-  onSearch(selectedUser: User) {
-    let observable = this.http.post(this.searchUrl, JSON.stringify(selectedUser))
-
-
-    observable.subscribe(
-      (result: any) => {
-        this.selectedUser = result;
-        this.selectedUser.password = "";
-        this.currentUser.validSelectedUser = true;
-        this.currentUser.selectedUser = result;
-      },
-      (err) => { alert("User does not exist"); }
-    )
-  }
 
   ngOnInit() {
 

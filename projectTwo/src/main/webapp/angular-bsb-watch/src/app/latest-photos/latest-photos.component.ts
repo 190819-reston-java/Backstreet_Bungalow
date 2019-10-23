@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-latest-photos',
@@ -12,29 +13,25 @@ export class LatestPhotosComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService) { }
+    private domSanitizer: DomSanitizer) { }
 
-  photoUser: User = new User();
   photos: any;
-  latestPhotosUrl: string = "http://localhost8080/Project2/getRecentPhotos"
-  getUserUrl: string = "http://localhost8080/Project2/getOneUser"
+  latestPhotosUrl: string = "http://localhost:8080/Project2/getRecentPhotos"
 
   ngOnInit() {
-    let observable = this.http.get(this.latestPhotosUrl);
-    observable.subscribe((result => {
-      this.photos = result;
-      console.log("bo");
-    }))
+    this.getPhotos();
   }
 
-  getUsernameForPhoto(username: number) {
-
-    let observable = this.userService.getUser(this.photoUser,this.getUserUrl);
+  getPhotos() {
+    console.log("bike");
+    let observable = this.http.get(this.latestPhotosUrl);
     observable.subscribe(
-      (result) => {
-
-      }
+      (result: any) => {
+      this.photos = result;
+      console.log("foo");},
+      (err) => { console.log("invalid"); }
     )
   }
+
 
 }

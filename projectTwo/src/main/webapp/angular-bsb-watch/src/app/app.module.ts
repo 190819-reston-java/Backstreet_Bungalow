@@ -39,6 +39,7 @@ import { PictureUploadComponent } from './picture-upload/picture-upload.componen
 import { MatSliderModule } from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import {MatCardModule} from '@angular/material/card';
     PopularSectionComponent,
     RegistrationUserComponent,
     BlogPostComponent,
-    PictureUploadComponent
+    PictureUploadComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

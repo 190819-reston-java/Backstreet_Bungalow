@@ -25,12 +25,17 @@ export class PictureUploadComponent implements OnInit {
   }
 
   onUpload() {
+    let currentUserId: string = this.currentUser.user.id.toString();
     const formData = new FormData();
     formData.append('image', this.selectedFile, this.selectedFile.name);
+    formData.append('id',currentUserId)
     this.http.post(this.pictureUploadUrl, formData)
       .subscribe(response => {
+        alert("Successfully uploaded photo!")
         console.log(response);  
-      })
+      },
+      (err) =>{alert("Invalid submission");})
+      
   }
 
 }
